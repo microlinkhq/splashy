@@ -69,7 +69,7 @@ Number of colors for create the palette based on the image.
 
 ##### tempFileOpts
 
-create-tempfile-file2 configuration related with temporal file location.
+[create-tempfile-file2](https://github.com/Kikobeats/create-temp-file2) configuration related with temporal file location.
 
 ## License
 
