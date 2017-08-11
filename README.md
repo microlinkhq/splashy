@@ -23,7 +23,6 @@ const splashy = require('splashy')
 
 splashy('https://i.imgur.com/ZJDyOhn.jpg')
   .then(predominantColors => console.log(predominantColors))
-  
   // => {
   //  dominantColor: '#951E1A',
   //  paletteColors: [ '#921D1C', '#CBB9AC', '#E04844' ]
