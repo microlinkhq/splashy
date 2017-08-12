@@ -32,7 +32,7 @@ const dominantColors = (filepath, opts, cb) => {
   )
 }
 
-const dominantColorFromUrl = (url, opts, cb) => {
+const dominantColorFromUrl = (url, opts = {}, cb) => {
   if (!url) return cb(new TypeError('Need to provide a valid file URL.'))
 
   const tempFile = createTempFile(opts.tempFileOpts)
