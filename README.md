@@ -21,7 +21,8 @@ $ npm install splashy --save
 ```js
 const splashy = require('splashy')
 
-splashy('https://i.imgur.com/ZJDyOhn.jpg')
+splashy
+  .fromUrl('https://i.imgur.com/ZJDyOhn.jpg')
   .then(predominantColors => console.log(predominantColors))
   // => {
   //  dominantColor: '#951E1A',
