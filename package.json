@@ -76,8 +76,8 @@
   "license": "MIT",
   "lint-staged": {
     "*.js": [
-      "git add",
-      "precommit-lint"
+      "precommit-lint",
+      "git add"
     ]
   },
   "standard": {

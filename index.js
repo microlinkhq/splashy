@@ -12,9 +12,18 @@ const pump = require('pump')
 
 const rgbToHex = (...rgb) => `#${rgbHex(...rgb)}`.toUpperCase()
 
-const dominantColors = (filepath, opts, cb) => {
-  if (!filepath) return cb(new TypeError('Need to provide a valid file path.'))
+const getDominantImageColor = data => {
+  const dominantColor = dominant(data)
+  return dominantColor ? rgbToHex(...dominantColor) : null
+}
 
+const getPaletteImageColors = (data, opts) => {
+  const paletteColors = palette(data, opts)
+  return paletteColors ? paletteColors.map(rgb => rgbToHex(...rgb)) : null
+}
+
+const fromFile = (filepath, opts, cb) => {
+  if (!filepath) return cb(new TypeError('Need to provide a valid file path.'))
   const { paletteColors = 3 } = opts
 
   return waterfall(
@@ -22,17 +31,15 @@ const dominantColors = (filepath, opts, cb) => {
       next => image(filepath, next),
       (img, next) =>
         next(null, {
-          dominantColor: rgbToHex(...dominant(img.data)),
-          paletteColors: palette(img.data, paletteColors).map(rgb =>
-            rgbToHex(...rgb)
-          )
+          dominantColor: getDominantImageColor(img.data),
+          paletteColors: getPaletteImageColors(img.data, paletteColors)
         })
     ],
     cb
   )
 }
 
-const dominantColorFromUrl = (url, opts = {}, cb) => {
+const fromUrl = (url, opts = {}, cb) => {
   if (!url) return cb(new TypeError('Need to provide a valid file URL.'))
 
   const tempFile = createTempFile(opts.tempFileOpts)
@@ -40,7 +47,7 @@ const dominantColorFromUrl = (url, opts = {}, cb) => {
     [
       next => get(url, next),
       (res, next) => pump(res, tempFile, next),
-      next => dominantColors(tempFile.path, opts, next),
+      next => fromFile(tempFile.path, opts, next),
       (predominantColors, next) =>
         tempFile.cleanup(() => next(null, predominantColors))
     ],
@@ -48,5 +55,5 @@ const dominantColorFromUrl = (url, opts = {}, cb) => {
   )
 }
 
-module.exports = universalify.fromCallback(dominantColors)
-module.exports.fromUrl = universalify.fromCallback(dominantColorFromUrl)
+module.exports = universalify.fromCallback(fromFile)
+module.exports.fromUrl = universalify.fromCallback(fromUrl)
