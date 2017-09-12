@@ -1,3 +1,12 @@
+<a name="1.0.2"></a>
+## 1.0.2 (2017-09-12)
+
+* Try to resolve, provide null as fallback ([3339213](https://github.com/kikobeats/splashy/commit/3339213))
+* fix(package): update create-temp-file2 to version 2.0.0 ([3800953](https://github.com/kikobeats/splashy/commit/3800953))
+* fix(package): update simple-get to version 2.7.0 ([6c70cc9](https://github.com/kikobeats/splashy/commit/6c70cc9))
+
+
+
 <a name="1.0.1"></a>
 ## 1.0.1 (2017-08-12)
 
