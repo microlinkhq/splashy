@@ -3,18 +3,32 @@
 const createTempFile = require('create-temp-file2')
 const universalify = require('universalify')
 const waterfall = require('run-waterfall')
+const vibrant = require('node-vibrant')
 const get = require('simple-get')
-const { palette } = require('lqip')
 const pump = require('pump')
 
-const toPalette = universalify.fromPromise(palette)
+const toPalette = swatch =>
+  Object.keys(swatch)
+    .map(key => ({
+      popularity: swatch[key].getPopulation(),
+      hex: swatch[key].getHex()
+    }))
+    .filter(Boolean)
+    .sort((a, b) => a.popularity <= b.popularity)
+    .map(color => color.hex)
+
+const getPalette = (filepath, cb) =>
+  vibrant
+    .from(filepath)
+    .getPalette((err, swatch) => (err ? cb(err) : cb(null, toPalette(swatch))))
+
 const createTypeError = prop =>
   new TypeError(`Need to provide a valid ${prop}.`)
 
 module.exports = (opts = {}) => {
   const fromFile = (filepath, cb) => {
     if (!filepath) return cb(createTypeError('file path'))
-    return toPalette(filepath, cb)
+    return getPalette(filepath, cb)
   }
 
   const fromUrl = (url, cb) => {
