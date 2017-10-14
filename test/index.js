@@ -3,58 +3,66 @@
 const should = require('should')
 const path = require('path')
 
-const splashy = require('..')
+const splashy = require('..')()
 
-const imagePath = path.resolve(__dirname, 'jerry.jpg')
-const imageUrl = 'https://i.imgur.com/ZJDyOhn.jpg'
+const filepath = path.resolve(__dirname, 'jerry.jpg')
+const fileUrl = 'https://i.imgur.com/ZJDyOhn.jpg'
 
-describe('get predominant colors', function () {
-  describe('callback', function () {
-    it('from a file', function (done) {
-      splashy(imagePath, { paletteColors: 3 }, function (
-        err,
-        predominantColors
-      ) {
-        should(predominantColors).be.eql({
-          dominantColor: '#951E1A',
-          paletteColors: ['#921D1C', '#CBB9AC', '#E04844']
-        })
+describe('get predominant colors', () => {
+  describe('callback', () => {
+    it('from a file', done => {
+      splashy.fromFile(filepath, (err, paletteColors) => {
+        should(paletteColors).be.eql([
+          '#941c1c',
+          '#841c16',
+          '#aa695e',
+          '#ca866c',
+          '#6c5444',
+          '#cca4a4'
+        ])
         done(err)
       })
     })
 
-    it('from an url', function (done) {
-      splashy.fromUrl(imageUrl, 3, function (err, predominantColors) {
-        should(predominantColors).be.eql({
-          dominantColor: '#951E1A',
-          paletteColors: ['#921D1C', '#CBB9AC', '#E04844']
-        })
+    it('from an url', done => {
+      splashy.fromUrl(fileUrl, (err, paletteColors) => {
+        should(paletteColors).be.eql([
+          '#941c1c',
+          '#841c16',
+          '#aa695e',
+          '#ca866c',
+          '#6c5444',
+          '#cca4a4'
+        ])
         done(err)
       })
     })
   })
 
-  describe('promise', function () {
-    it('from a file', function () {
-      return splashy(imagePath, { paletteColors: 3 }).then(function (
-        predominantColors
-      ) {
-        should(predominantColors).be.eql({
-          dominantColor: '#951E1A',
-          paletteColors: ['#921D1C', '#CBB9AC', '#E04844']
-        })
-      })
+  describe('promise', () => {
+    it('from a file', async () => {
+      const paletteColors = await splashy.fromFile(filepath)
+      should(paletteColors).be.eql([
+        '#941c1c',
+        '#841c16',
+        '#aa695e',
+        '#ca866c',
+        '#6c5444',
+        '#cca4a4'
+      ])
     })
 
-    it('from an url', function () {
-      return splashy
-        .fromUrl(imageUrl, { paletteColors: 3 })
-        .then(function (predominantColors) {
-          should(predominantColors).be.eql({
-            dominantColor: '#951E1A',
-            paletteColors: ['#921D1C', '#CBB9AC', '#E04844']
-          })
-        })
+    it('from an url', async () => {
+      const paletteColors = await splashy.fromUrl(fileUrl)
+
+      should(paletteColors).be.eql([
+        '#941c1c',
+        '#841c16',
+        '#aa695e',
+        '#ca866c',
+        '#6c5444',
+        '#cca4a4'
+      ])
     })
   })
 })
