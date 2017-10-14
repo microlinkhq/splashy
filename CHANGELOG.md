@@ -1,3 +1,13 @@
+<a name="2.0.0"></a>
+# 2.0.0 (2017-10-14)
+
+* Add node-vibrant dep ([8867023](https://github.com/kikobeats/splashy/commit/8867023))
+* Avoid lts ([81d924e](https://github.com/kikobeats/splashy/commit/81d924e))
+* Avoid specific travis setup ([cc90884](https://github.com/kikobeats/splashy/commit/cc90884))
+* Use lqip dep ([86dd55c](https://github.com/kikobeats/splashy/commit/86dd55c))
+
+
+
 <a name="1.0.2"></a>
 ## 1.0.2 (2017-09-12)
 
