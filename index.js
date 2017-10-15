@@ -7,13 +7,14 @@ const vibrant = require('node-vibrant')
 const get = require('simple-get')
 const pump = require('pump')
 
-const toPalette = swatch = {} =>
+const toPalette = swatch =>
   Object.keys(swatch)
-    .map(key => ({
-      popularity: swatch[key].getPopulation(),
-      hex: swatch[key].getHex()
-    }))
-    .filter(Boolean)
+    .reduce((acc, key) => {
+      const value = swatch[key]
+      if (!value) return acc
+      acc.push({ popularity: value.getPopulation(), hex: value.getHex() })
+      return acc
+    }, [])
     .sort((a, b) => a.popularity <= b.popularity)
     .map(color => color.hex)
 
