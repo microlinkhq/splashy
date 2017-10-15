@@ -1,3 +1,11 @@
+<a name="2.0.1"></a>
+## 2.0.1 (2017-10-15)
+
+* Handle edge cases ([077a8eb](https://github.com/kikobeats/splashy/commit/077a8eb))
+* Update index.js ([527024c](https://github.com/kikobeats/splashy/commit/527024c))
+
+
+
 <a name="2.0.0"></a>
 # 2.0.0 (2017-10-14)
 
