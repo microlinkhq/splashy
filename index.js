@@ -7,7 +7,7 @@ const vibrant = require('node-vibrant')
 const get = require('simple-get')
 const pump = require('pump')
 
-const toPalette = swatch =>
+const toPalette = swatch = {} =>
   Object.keys(swatch)
     .map(key => ({
       popularity: swatch[key].getPopulation(),
