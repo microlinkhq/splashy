@@ -19,38 +19,26 @@ $ npm install splashy --save
 ## Usage
 
 ```js
-const splashy = require('splashy')
+const splashy = require('splashy')()
 
-splashy
-  .fromUrl('https://i.imgur.com/ZJDyOhn.jpg')
-  .then(predominantColors => console.log(predominantColors))
-  // => {
-  //  dominantColor: '#951E1A',
-  //  paletteColors: [ '#921D1C', '#CBB9AC', '#E04844' ]
-  // }
+;(async () => {
+  const colors = await splashy.fromUrl('https://i.imgur.com/ZJDyOhn.jpg')
+  console.log(colors)
+  // => [ '#941c1c', '#841c16', '#aa695e', '#ca866c', '#6c5444', '#cca4a4' ]
+})()
 ```
 
 ## API
 
-### splashy(filepath, [options])
-
-#### filepath
-
-*Required*<br>
-Type: `String`
-
-The file path of the image to extract the color information.
+### splashy([options])
 
 #### options
 
-##### paletteColors
+##### tempFileOpts
 
-Type: `Number`<br>
-Default: `3`
+[create-tempfile-file2](https://github.com/Kikobeats/create-temp-file2) configuration related with temporal file location.
 
-Number of colors for create the palette based on the image.
-
-### splashy.fromUrl(url, [options])
+### splashy.fromUrl(url)
 
 #### url
 
@@ -59,18 +47,14 @@ Type: `String`
 
 The url of the image to extract the color information.
 
-#### options
+### splashy.fromFile(filepath)
 
-##### paletteColors
+#### filepath
 
-Type: `Number`<br>
-Default: `3`
+*Required*<br>
+Type: `String`
 
-Number of colors for create the palette based on the image.
-
-##### tempFileOpts
-
-[create-tempfile-file2](https://github.com/Kikobeats/create-temp-file2) configuration related with temporal file location.
+The filepath of the image to extract the color information.
 
 ## License
 
