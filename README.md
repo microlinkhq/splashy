@@ -58,6 +58,7 @@ The filepath of the image to extract the color information.
 
 ## Related
 
+- [color-microservice](https://github.com/Kikobeats/color-microservice) – Get color information from any URL image microservice.
 - [colorable-dominant](https://github.com/Kikobeats/colorable-dominant) – Create ARIA-compliant color themes based on a predominant color palette.
 
 ## License
