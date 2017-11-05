@@ -56,6 +56,10 @@ Type: `String`
 
 The filepath of the image to extract the color information.
 
+## Related
+
+- [colorable-dominant](https://github.com/Kikobeats/colorable-dominant) – Create ARIA-compliant color themes based on a predominant color palette.
+
 ## License
 
 MIT © [Kiko Beats](https://github.com/Kikobeats).
