@@ -31,7 +31,7 @@
     "url"
   ],
   "dependencies": {
-    "async": "~2.5.0",
+    "async": "~2.6.0",
     "create-temp-file2": "~2.0.0",
     "node-vibrant": "~3.0.0-alpha.2",
     "pump": "~1.0.2",
