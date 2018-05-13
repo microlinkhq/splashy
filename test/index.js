@@ -15,8 +15,8 @@ describe('get predominant colors', () => {
         should(paletteColors).be.eql([
           '#941c1c',
           '#841c16',
-          '#aa695e',
-          '#ca866c',
+          '#ad685e',
+          '#d48c74',
           '#6c5444',
           '#cca4a4'
         ])
@@ -29,8 +29,8 @@ describe('get predominant colors', () => {
         should(paletteColors).be.eql([
           '#941c1c',
           '#841c16',
-          '#aa695e',
-          '#ca866c',
+          '#ad685e',
+          '#d48c74',
           '#6c5444',
           '#cca4a4'
         ])
@@ -45,8 +45,8 @@ describe('get predominant colors', () => {
       should(paletteColors).be.eql([
         '#941c1c',
         '#841c16',
-        '#aa695e',
-        '#ca866c',
+        '#ad685e',
+        '#d48c74',
         '#6c5444',
         '#cca4a4'
       ])
@@ -58,8 +58,8 @@ describe('get predominant colors', () => {
       should(paletteColors).be.eql([
         '#941c1c',
         '#841c16',
-        '#aa695e',
-        '#ca866c',
+        '#ad685e',
+        '#d48c74',
         '#6c5444',
         '#cca4a4'
       ])

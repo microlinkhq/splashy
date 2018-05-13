@@ -40,7 +40,7 @@ module.exports = (opts = {}) => {
       next => get(url, next),
       (res, next) => pump(res, tempFile, next),
       next => fromFile(tempFile.path, next),
-      (paletteColors, next) => tempFile.cleanup(() => next(null, paletteColors))
+      (paletteColors, next) => tempFile.cleanup(err => next(err, paletteColors))
     ]
 
     return waterfall(tasks, cb)

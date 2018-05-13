@@ -63,7 +63,6 @@
     "dev": "nodemon --exec \"npm start\" -e \"js\"",
     "lint": "standard-markdown && standard",
     "precommit": "lint-staged",
-    "precommit-lint": "prettier-standard",
     "prelint": "npm run pretty",
     "pretest": "npm run lint",
     "pretty": "prettier-standard {core,test,bin}/**/*.js",
@@ -72,8 +71,12 @@
   },
   "license": "MIT",
   "lint-staged": {
+    "package.json": [
+      "finepack",
+      "git add"
+    ],
     "*.js": [
-      "precommit-lint",
+      "prettier-standard",
       "git add"
     ]
   },
