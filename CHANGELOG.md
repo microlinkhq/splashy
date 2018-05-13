@@ -1,3 +1,15 @@
+<a name="2.0.2"></a>
+## 2.0.2 (2018-05-13)
+
+* Update badge url ([76dbb0a](https://github.com/kikobeats/splashy/commit/76dbb0a))
+* Update deps ([6a65b83](https://github.com/kikobeats/splashy/commit/6a65b83))
+* Update deps ([81fffcc](https://github.com/kikobeats/splashy/commit/81fffcc))
+* Update doc ([03f257f](https://github.com/kikobeats/splashy/commit/03f257f))
+* Update README.md ([57400b1](https://github.com/kikobeats/splashy/commit/57400b1))
+* Update README.md ([1770067](https://github.com/kikobeats/splashy/commit/1770067))
+
+
+
 <a name="2.0.1"></a>
 ## 2.0.1 (2017-10-15)
 
