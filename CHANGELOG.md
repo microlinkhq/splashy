@@ -1,3 +1,10 @@
+<a name="2.0.3"></a>
+## 2.0.3 (2018-05-13)
+
+* Update deps ([c863863](https://github.com/kikobeats/splashy/commit/c863863))
+
+
+
 <a name="2.0.2"></a>
 ## 2.0.2 (2018-05-13)
 
