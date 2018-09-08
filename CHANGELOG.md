@@ -1,3 +1,10 @@
+<a name="2.0.4"></a>
+## 2.0.4 (2018-09-08)
+
+* Use tempy instad of create-temp-file2 ([ae0bee2](https://github.com/kikobeats/splashy/commit/ae0bee2))
+
+
+
 <a name="2.0.3"></a>
 ## 2.0.3 (2018-05-13)
 
