@@ -1,11 +1,12 @@
 'use strict'
 
-const createTempFile = require('create-temp-file2')
 const universalify = require('universalify')
 const waterfall = require('run-waterfall')
 const vibrant = require('node-vibrant')
 const get = require('simple-get')
+const tempy = require('tempy')
 const pump = require('pump')
+const fs = require('fs')
 
 const toPalette = swatch =>
   Object.keys(swatch)
@@ -34,13 +35,15 @@ module.exports = (opts = {}) => {
 
   const fromUrl = (url, cb) => {
     if (!url) return cb(createTypeError('image url'))
-    const tempFile = createTempFile(opts)
+    const tmpPath = tempy.file(opts)
+    const writeStream = fs.createWriteStream(tmpPath)
 
     const tasks = [
       next => get(url, next),
-      (res, next) => pump(res, tempFile, next),
-      next => fromFile(tempFile.path, next),
-      (paletteColors, next) => tempFile.cleanup(err => next(err, paletteColors))
+      (res, next) => pump(res, writeStream, next),
+      next => fromFile(tmpPath, next),
+      (paletteColors, next) =>
+        fs.unlink(tmpPath, err => next(err, paletteColors))
     ]
 
     return waterfall(tasks, cb)
