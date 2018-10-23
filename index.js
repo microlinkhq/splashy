@@ -1,8 +1,8 @@
 'use strict'
 
-const universalify = require('universalify')
 const waterfall = require('run-waterfall')
 const vibrant = require('node-vibrant')
+const { promisify } = require('util')
 const get = require('simple-get')
 const tempy = require('tempy')
 const pump = require('pump')
@@ -50,7 +50,7 @@ module.exports = (opts = {}) => {
   }
 
   return {
-    fromFile: universalify.fromCallback(fromFile),
-    fromUrl: universalify.fromCallback(fromUrl)
+    fromFile: promisify(fromFile),
+    fromUrl: promisify(fromUrl)
   }
 }
