@@ -60,7 +60,6 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "dev": "nodemon --exec \"npm start\" -e \"js\"",
     "lint": "standard-markdown README.md && standard",
-    "precommit": "lint-staged",
     "prelint": "npm run pretty",
     "pretest": "npm run lint",
     "pretty": "prettier-standard {core,test,bin}/**/*.js",
@@ -68,6 +67,11 @@
     "test": "nyc mocha"
   },
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "package.json": [
       "finepack",
