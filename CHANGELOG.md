@@ -1,3 +1,12 @@
+<a name="2.0.5"></a>
+## 2.0.5 (2018-10-24)
+
+* Migrate linter staged ([cf28924](https://github.com/kikobeats/splashy/commit/cf28924))
+* Remove unnecessary dependencie ([0e985b3](https://github.com/kikobeats/splashy/commit/0e985b3))
+* Remove unnecessary dependency ([2b6b3a0](https://github.com/kikobeats/splashy/commit/2b6b3a0))
+
+
+
 <a name="2.0.4"></a>
 ## 2.0.4 (2018-09-08)
 
