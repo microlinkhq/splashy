@@ -1,3 +1,11 @@
+<a name="3.0.0"></a>
+# 3.0.0 (2018-12-11)
+
+* Remove callback ([e02ac57](https://github.com/kikobeats/splashy/commit/e02ac57))
+* Sort values ([18bae7d](https://github.com/kikobeats/splashy/commit/18bae7d))
+
+
+
 <a name="2.0.5"></a>
 ## 2.0.5 (2018-10-24)
 
