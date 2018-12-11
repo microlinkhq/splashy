@@ -19,26 +19,24 @@ $ npm install splashy --save
 ## Usage
 
 ```js
-const splashy = require('splashy')()
+const splashy = require('splashy')
 
-;(async () => {
-  const colors = await splashy.fromUrl('https://i.imgur.com/ZJDyOhn.jpg')
-  console.log(colors)
+// from url
+splashy
+  .url('https://i.imgur.com/ZJDyOhn.jpg')
+  .then(colors => console.log(colors))
   // => [ '#941c1c', '#841c16', '#aa695e', '#ca866c', '#6c5444', '#cca4a4' ]
-})()
+
+// from file
+splashy
+  .file(path.resolve(__dirname, 'jerry.jpg'))
+  .then(colors => console.log(colors))
+  // // => [ '#941c1c', '#841c16', '#aa695e', '#ca866c', '#6c5444', '#cca4a4' ]
 ```
 
 ## API
 
-### splashy([options])
-
-#### options
-
-##### tempFileOpts
-
-[create-tempfile-file2](https://github.com/Kikobeats/create-temp-file2) configuration related with temporal file location.
-
-### splashy.fromUrl(url)
+### splashy.url(url, [options])
 
 #### url
 
@@ -47,7 +45,13 @@ Type: `String`
 
 The url of the image to extract the color information.
 
-### splashy.fromFile(filepath)
+#### object
+
+Type: `object`
+
+Options to passed to [got#options](https://github.com/sindresorhus/got#options).
+
+### splashy.file(filepath)
 
 #### filepath
 

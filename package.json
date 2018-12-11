@@ -31,21 +31,21 @@
     "url"
   ],
   "dependencies": {
+    "got": "~9.4.0",
     "node-vibrant": "~3.0.0",
     "pump": "~3.0.0",
-    "run-waterfall": "~1.1.6",
-    "simple-get": "~3.0.2",
-    "tempy": "~0.2.1"
+    "temperment": "~1.0.0"
   },
   "devDependencies": {
+    "ava": "latest",
     "coveralls": "latest",
     "git-dirty": "latest",
+    "hexsorter": "latest",
     "husky": "latest",
     "lint-staged": "latest",
-    "mocha": "latest",
+    "lodash": "latest",
     "nyc": "latest",
     "prettier-standard": "latest",
-    "should": "latest",
     "standard": "11",
     "standard-markdown": "latest"
   },
@@ -60,11 +60,9 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "dev": "nodemon --exec \"npm start\" -e \"js\"",
     "lint": "standard-markdown README.md && standard",
-    "prelint": "npm run pretty",
     "pretest": "npm run lint",
-    "pretty": "prettier-standard {core,test,bin}/**/*.js",
     "start": "node index.js",
-    "test": "nyc mocha"
+    "test": "nyc ava"
   },
   "license": "MIT",
   "husky": {
@@ -80,11 +78,10 @@
     "*.js": [
       "prettier-standard",
       "git add"
-    ]
-  },
-  "standard": {
-    "env": [
-      "mocha"
+    ],
+    "*.md": [
+      "standard-markdown",
+      "git add"
     ]
   }
 }
