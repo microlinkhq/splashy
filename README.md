@@ -18,47 +18,49 @@ $ npm install splashy --save
 
 ## Usage
 
+### From URL
+
 ```js
-const splashy = require('splashy')
+(async () => {
+  const splashy = require('splashy')
+  const got = require('got')
 
-// from url
-splashy
-  .url('https://i.imgur.com/ZJDyOhn.jpg')
-  .then(colors => console.log(colors))
+  const url = 'https://kikobeats.com/images/avatar.jpg'
+  const { body } = await got(url, { encoding: null })
+  const palette = await splashy(body)
+
+  console.log(palette)
   // => [ '#941c1c', '#841c16', '#aa695e', '#ca866c', '#6c5444', '#cca4a4' ]
+})()
+```
 
-// from file
-splashy
-  .file(path.resolve(__dirname, 'jerry.jpg'))
-  .then(colors => console.log(colors))
-  // // => [ '#941c1c', '#841c16', '#aa695e', '#ca866c', '#6c5444', '#cca4a4' ]
+### From Buffer
+
+```js
+(async () => {
+  const splashy = require('splashy')
+  const path = require('path')
+  const fs = require('fs')
+
+  const filepath = path.resolve(__dirname, 'avatar.jpg')
+  const buffer = await fs.readFile(filepath)
+  const palette = await splashy(buffer)
+
+  console.log(palette)
+  // => [ '#941c1c', '#841c16', '#aa695e', '#ca866c', '#6c5444', '#cca4a4' ]
+})()
 ```
 
 ## API
 
-### splashy.url(url, [options])
+### splashy(input)
 
-#### url
-
-*Required*<br>
-Type: `String`
-
-The url of the image to extract the color information.
-
-#### object
-
-Type: `object`
-
-Options to passed to [got#options](https://github.com/sindresorhus/got#options).
-
-### splashy.file(filepath)
-
-#### filepath
+#### input
 
 *Required*<br>
-Type: `String`
+Type: [ImageSource](https://github.com/akfish/node-vibrant#imagesource)
 
-The filepath of the image to extract the color information.
+The raw contnet for detecting the color information.
 
 ## Related
 
