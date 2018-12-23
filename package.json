@@ -2,7 +2,7 @@
   "name": "splashy",
   "description": "Given an image, extract predominant & palette colors",
   "homepage": "https://documentup.com/Kikobeats/splashy",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "main": "index.js",
   "author": {
     "name": "Kiko Beats",
