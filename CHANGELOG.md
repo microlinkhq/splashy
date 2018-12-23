@@ -1,3 +1,10 @@
+<a name="4.0.0"></a>
+# 4.0.0 (2018-12-23)
+
+* Remove network layer ([55e0bc6](https://github.com/kikobeats/splashy/commit/55e0bc6))
+
+
+
 <a name="3.0.0"></a>
 # 3.0.0 (2018-12-11)
 

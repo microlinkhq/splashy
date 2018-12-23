@@ -2,7 +2,7 @@
   "name": "splashy",
   "description": "Given an image, extract predominant & palette colors",
   "homepage": "https://documentup.com/Kikobeats/splashy",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "main": "index.js",
   "author": {
     "name": "Kiko Beats",
@@ -31,15 +31,13 @@
     "url"
   ],
   "dependencies": {
-    "got": "~9.4.0",
-    "node-vibrant": "~3.0.0",
-    "pump": "~3.0.0",
-    "temperment": "~1.0.0"
+    "node-vibrant": "~3.0.0"
   },
   "devDependencies": {
     "ava": "latest",
     "coveralls": "latest",
     "git-dirty": "latest",
+    "got": "latest",
     "hexsorter": "latest",
     "husky": "latest",
     "lint-staged": "latest",
