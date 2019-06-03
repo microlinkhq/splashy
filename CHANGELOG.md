@@ -1,3 +1,14 @@
+<a name="5.0.0"></a>
+# 5.0.0 (2019-06-03)
+
+* feat: consistent results ([e2fc257](https://github.com/microlinkhq/splashy/commit/e2fc257))
+* refactor: less code ([7945ac7](https://github.com/microlinkhq/splashy/commit/7945ac7))
+* refactor: remove unnecessary code ([aefcbb0](https://github.com/microlinkhq/splashy/commit/aefcbb0))
+* build: update dependencies ([99a8f9f](https://github.com/microlinkhq/splashy/commit/99a8f9f))
+* build: update meta ([d450e45](https://github.com/microlinkhq/splashy/commit/d450e45))
+
+
+
 <a name="4.0.1"></a>
 ## 4.0.1 (2018-12-23)
 
