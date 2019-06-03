@@ -1,7 +1,7 @@
 {
   "name": "splashy",
   "description": "Given an image, extract predominant & palette colors",
-  "homepage": "https://documentup.com/Kikobeats/splashy",
+  "homepage": "https://nicedoc.io/microlinkhq/splashy",
   "version": "4.0.1",
   "main": "index.js",
   "author": {
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kikobeats/splashy.git"
+    "url": "git+https://github.com/microlinkhq/splashy.git"
   },
   "bugs": {
-    "url": "https://github.com/Kikobeats/splashy/issues"
+    "url": "https://github.com/microlinkhq/splashy/issues"
   },
   "keywords": [
     "canvas",
