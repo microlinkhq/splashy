@@ -2,9 +2,8 @@
 
 const { isEmpty, clone, pull } = require('lodash')
 const hexSorter = require('hexsorter')
-const test = require('ava')
 const path = require('path')
-const got = require('got')
+const test = require('ava')
 const fs = require('fs')
 
 const splashy = require('..')
@@ -22,20 +21,7 @@ const sortColors = colors => {
   return output
 }
 
-test('required input', async t => {
-  const error = await t.throwsAsync(splashy())
-  t.is(error.name, 'AssertionError')
-  t.is(error.message, 'input is required')
-})
-
-test('from url', async t => {
-  const url = 'https://i.imgur.com/ZJDyOhn.jpg'
-  const { body } = await got(url, { encoding: null })
-  const colors = await splashy(body)
-  t.snapshot(sortColors(colors))
-})
-
-test('from file', async t => {
+test('get predominant colors', async t => {
   const filepath = path.resolve(__dirname, 'jerry.jpg')
   const buffer = fs.readFileSync(filepath)
   const colors = await splashy(buffer)

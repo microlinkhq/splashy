@@ -1,7 +1,5 @@
 'use strict'
 
-const assert = require('assert')
-
 const vibrant = require('node-vibrant')
 
 const toPalette = swatch =>
@@ -15,8 +13,5 @@ const toPalette = swatch =>
     .sort((a, b) => a.popularity <= b.popularity)
     .map(color => color.hex)
 
-module.exports = async input => {
-  assert(input, 'input is required')
-  const swatch = await vibrant.from(input).getPalette()
-  return toPalette(swatch)
-}
+module.exports = async input =>
+  toPalette(await vibrant.from(input).getPalette())
