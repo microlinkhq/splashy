@@ -24,8 +24,8 @@ const sortColors = colors => {
 
 test('required input', async t => {
   const error = await t.throwsAsync(splashy())
-  t.is(error.name, 'TypeError')
-  t.is(error.message, 'Need to provide a valid input.')
+  t.is(error.name, 'AssertionError')
+  t.is(error.message, 'input is required')
 })
 
 test('from url', async t => {
