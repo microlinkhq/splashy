@@ -6,7 +6,12 @@ const toPalette = swatch =>
   Object.keys(swatch)
     .reduce((acc, key) => {
       const value = swatch[key]
-      acc.push({ popularity: value.getPopulation(), hex: value.getHex() })
+      if (value) {
+        acc.push({
+          popularity: value.getPopulation(),
+          hex: value.getHex()
+        })
+      }
       return acc
     }, [])
     .sort((a, b) => a.popularity <= b.popularity)
