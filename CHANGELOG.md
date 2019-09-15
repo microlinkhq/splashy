@@ -1,3 +1,11 @@
+<a name="5.0.1"></a>
+## 5.0.1 (2019-09-15)
+
+* build: update dependencies ([06664a5](https://github.com/microlinkhq/splashy/commit/06664a5))
+* fix: ensure value exist ([db9e25f](https://github.com/microlinkhq/splashy/commit/db9e25f))
+
+
+
 <a name="5.0.0"></a>
 # 5.0.0 (2019-06-03)
 
