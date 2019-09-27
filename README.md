@@ -60,7 +60,7 @@ $ npm install splashy --save
 *Required*<br>
 Type: [ImageSource](https://github.com/akfish/node-vibrant#imagesource)
 
-The raw contnet for detecting the color information.
+The raw content for detecting the color information.
 
 ## Related
 
