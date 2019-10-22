@@ -1,4 +1,6 @@
-# splashy
+<div align="center">
+  <img src="https://cdn.microlink.io/logo/banner.png" alt="microlink cdn">
+</div>
 
 ![Last version](https://img.shields.io/github/tag/microlinkhq/splashy.svg?style=flat-square)
 [![Build Status](https://img.shields.io/travis/microlinkhq/splashy/master.svg?style=flat-square)](https://travis-ci.org/microlinkhq/splashy)
