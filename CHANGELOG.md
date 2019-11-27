@@ -1,3 +1,12 @@
+<a name="5.0.2"></a>
+## 5.0.2 (2019-11-27)
+
+* build: update dependencies ([e0b7b73](https://github.com/microlinkhq/splashy/commit/e0b7b73))
+* Fix typo ([72db006](https://github.com/microlinkhq/splashy/commit/72db006))
+* Update README.md ([11bf14f](https://github.com/microlinkhq/splashy/commit/11bf14f))
+
+
+
 <a name="5.0.1"></a>
 ## 5.0.1 (2019-09-15)
 
