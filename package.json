@@ -39,11 +39,11 @@
     "git-dirty": "latest",
     "got": "latest",
     "hexsorter": "latest",
-    "husky": "latest",
     "lint-staged": "latest",
     "lodash": "latest",
     "nyc": "latest",
     "prettier-standard": "latest",
+    "simple-git-hooks": "latest",
     "standard": "latest",
     "standard-markdown": "latest"
   },
@@ -63,11 +63,6 @@
     "test": "nyc ava"
   },
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "package.json": [
       "finepack",
@@ -81,5 +76,9 @@
       "standard-markdown",
       "git add"
     ]
+  },
+  "simple-git-hooks": {
+    "commit-msg": "npx commitlint --edit",
+    "pre-commit": "npx lint-staged"
   }
 }
