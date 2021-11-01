@@ -1,3 +1,9 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### 5.0.3 (2021-11-01)
+
 <a name="5.0.2"></a>
 ## 5.0.2 (2019-11-27)
 
@@ -124,6 +130,3 @@
 * Add canvas dependencies for testing ([1add084](https://github.com/kikobeats/splashy/commit/1add084))
 * First commit ([fa97551](https://github.com/kikobeats/splashy/commit/fa97551))
 * Fix linter ([34f41fd](https://github.com/kikobeats/splashy/commit/34f41fd))
-
-
-
