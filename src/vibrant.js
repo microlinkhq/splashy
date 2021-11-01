@@ -22,6 +22,7 @@ class SharpImage extends ImageBase {
         height: info.height,
         data: data
       }
+
       return this
     } else {
       return Promise.reject(
@@ -42,9 +43,7 @@ class SharpImage extends ImageBase {
     return this._image.height
   }
 
-  resize (targetWidth, targetHeight, ratio) {
-    // done in the load step, ignoring any maxDimension or quality options
-  }
+  resize () {}
 
   getPixelCount () {
     const { width, height } = this._image
