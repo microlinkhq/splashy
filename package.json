@@ -34,18 +34,22 @@
     "node-vibrant": "~3.1.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
     "ava": "latest",
-    "coveralls": "latest",
-    "git-dirty": "latest",
-    "got": "latest",
+    "ci-publish": "latest",
+    "conventional-github-releaser": "latest",
+    "finepack": "latest",
+    "git-authors-cli": "latest",
     "hexsorter": "latest",
     "lint-staged": "latest",
-    "lodash": "latest",
+    "npm-check-updates": "latest",
     "nyc": "latest",
     "prettier-standard": "latest",
     "simple-git-hooks": "latest",
     "standard": "latest",
-    "standard-markdown": "latest"
+    "standard-markdown": "latest",
+    "standard-version": "latest"
   },
   "engines": {
     "node": ">= 8"
@@ -55,26 +59,36 @@
   ],
   "scripts": {
     "clean": "rm -rf node_modules",
+    "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "dev": "nodemon --exec \"npm start\" -e \"js\"",
     "lint": "standard-markdown README.md && standard",
+    "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
+    "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
+    "release": "standard-version -a",
+    "release:github": "conventional-github-releaser -p angular",
+    "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "node index.js",
-    "test": "nyc ava"
+    "test": "nyc ava",
+    "update": "ncu -u",
+    "update:check": "ncu -- --error-level 2"
   },
   "license": "MIT",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "lint-staged": {
     "package.json": [
-      "finepack",
-      "git add"
+      "finepack"
     ],
-    "*.js": [
-      "prettier-standard",
-      "git add"
+    "*.js,!*.min.js,": [
+      "prettier-standard"
     ],
     "*.md": [
-      "standard-markdown",
-      "git add"
+      "standard-markdown"
     ]
   },
   "simple-git-hooks": {
