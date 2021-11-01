@@ -30,6 +30,7 @@ images.forEach(image => {
     const filepath = path.resolve(path.resolve(FIXTURES_PATH, image))
     const buffer = fs.readFileSync(filepath)
     const colors = await splashy(buffer)
+    t.true(colors.length > 0)
     t.snapshot(sortColors(colors))
   })
 })
