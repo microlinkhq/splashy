@@ -9,7 +9,12 @@ const fs = require('fs')
 
 const splashy = require('..')
 const FIXTURES_PATH = path.resolve(__dirname, 'fixtures')
-const images = fs.readdirSync(FIXTURES_PATH)
+
+const UNSUPPORTED_FORMATS = ['.ico', '.avif', '.mng', '.bmp']
+
+const images = fs
+  .readdirSync(FIXTURES_PATH)
+  .filter(image => !UNSUPPORTED_FORMATS.includes(path.extname(image)))
 
 const sortColors = colors => {
   const input = clone(colors)

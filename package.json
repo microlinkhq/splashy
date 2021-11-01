@@ -3,7 +3,7 @@
   "description": "Given an image, extract predominant & palette colors",
   "homepage": "https://nicedoc.io/microlinkhq/splashy",
   "version": "5.0.3",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": {
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
@@ -37,7 +37,8 @@
     "url"
   ],
   "dependencies": {
-    "node-vibrant": "~3.1.5"
+    "node-vibrant": "~3.2.0-alpha",
+    "sharp": "~0.29.2"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
