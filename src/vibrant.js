@@ -13,6 +13,8 @@ class SharpImage extends ImageBase {
   async load (image) {
     if (typeof image === 'string' || image instanceof Buffer) {
       const { data, info } = await sharp(image)
+        // resizing the image before processing leads to more consistent (and much shorter) processing times.
+        .resize(200, 200, { fit: 'inside', withoutEnlargement: true })
         .ensureAlpha()
         .raw()
         .toBuffer({ resolveWithObject: true })
