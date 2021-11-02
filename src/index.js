@@ -1,5 +1,6 @@
 'use strict'
 
+const debug = require('debug-logfmt')('splashy')
 const createVibrant = require('./vibrant')
 
 const toPalette = swatch =>
@@ -24,6 +25,7 @@ module.exports = async input => {
     const vibrant = createVibrant(input)
     swatch = await vibrant.getPalette()
   } catch (err) {
+    debug.error('whoops', err)
     swatch = {}
   }
 

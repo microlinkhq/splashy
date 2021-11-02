@@ -37,6 +37,7 @@
     "url"
   ],
   "dependencies": {
+    "debug-logfmt": "~1.0.4",
     "node-vibrant": "~3.2.0-alpha",
     "sharp": "~0.29.2"
   },
