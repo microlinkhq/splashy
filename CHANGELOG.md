@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0-beta.4](https://github.com/microlinkhq/splashy/compare/v5.1.0-beta.3...v5.1.0-beta.4) (2021-11-03)
+
 ## [5.1.0-beta.3](https://github.com/microlinkhq/splashy/compare/v5.1.0-beta.2...v5.1.0-beta.3) (2021-11-02)
 
 ## [5.1.0-beta.2](https://github.com/microlinkhq/splashy/compare/v5.1.0-beta.1...v5.1.0-beta.2) (2021-11-02)
