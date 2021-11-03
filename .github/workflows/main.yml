@@ -11,13 +11,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: kikobeats/docker-browserless-vips:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: lts/*
       - name: Install
         run: npm install --no-package-lock
       - name: Test

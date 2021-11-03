@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0-beta.5](https://github.com/microlinkhq/splashy/compare/v5.1.0-beta.4...v5.1.0-beta.5) (2021-11-03)
+
+## [5.1.0-beta.4](https://github.com/microlinkhq/splashy/compare/v5.1.0-beta.3...v5.1.0-beta.4) (2021-11-03)
+
+## [5.1.0-beta.3](https://github.com/microlinkhq/splashy/compare/v5.1.0-beta.2...v5.1.0-beta.3) (2021-11-02)
+
+## [5.1.0-beta.2](https://github.com/microlinkhq/splashy/compare/v5.1.0-beta.1...v5.1.0-beta.2) (2021-11-02)
+
+## [5.1.0-beta.1](https://github.com/microlinkhq/splashy/compare/v5.1.0-beta.0...v5.1.0-beta.1) (2021-11-01)
+
+## [5.1.0-beta.0](https://github.com/microlinkhq/splashy/compare/v5.0.3...v5.1.0-beta.0) (2021-11-01)
+
+
+### Features
+
+* add bmp supoprt ([5d8b33c](https://github.com/microlinkhq/splashy/commit/5d8b33c725cdc5ac7b0794e218a4e255574aec45))
+* use sharp ([d21c2d4](https://github.com/microlinkhq/splashy/commit/d21c2d4f6688343457b626e870629ef489ad13d3))
+
 ### 5.0.3 (2021-11-01)
 
 <a name="5.0.2"></a>

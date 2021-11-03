@@ -2,8 +2,8 @@
   "name": "splashy",
   "description": "Given an image, extract predominant & palette colors",
   "homepage": "https://nicedoc.io/microlinkhq/splashy",
-  "version": "5.0.3",
-  "main": "index.js",
+  "version": "5.1.0-beta.5",
+  "main": "src/index.js",
   "author": {
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
@@ -37,7 +37,9 @@
     "url"
   ],
   "dependencies": {
-    "node-vibrant": "~3.1.5"
+    "debug-logfmt": "~1.0.4",
+    "node-vibrant": "~3.2.0-alpha",
+    "sharp": "~0.29.2"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -61,7 +63,7 @@
     "node": ">= 8"
   },
   "files": [
-    "index.js"
+    "src"
   ],
   "scripts": {
     "clean": "rm -rf node_modules",
@@ -70,6 +72,7 @@
     "dev": "nodemon --exec \"npm start\" -e \"js\"",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
+    "preinstall": "npx bin-version-check-cli convert \">=7\"",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
     "release": "standard-version -a",

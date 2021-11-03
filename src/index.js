@@ -1,6 +1,7 @@
 'use strict'
 
-const vibrant = require('node-vibrant')
+const debug = require('debug-logfmt')('splashy')
+const createVibrant = require('./vibrant')
 
 const toPalette = swatch =>
   Object.keys(swatch)
@@ -21,8 +22,10 @@ module.exports = async input => {
   let swatch
 
   try {
-    swatch = await vibrant.from(input).getPalette()
+    const vibrant = createVibrant(input)
+    swatch = await vibrant.getPalette()
   } catch (err) {
+    debug.error(err)
     swatch = {}
   }
 
