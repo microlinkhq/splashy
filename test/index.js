@@ -10,6 +10,8 @@ const fs = require('fs')
 const splashy = require('..')
 const FIXTURES_PATH = path.resolve(__dirname, 'fixtures')
 
+const SKIP_EXTENSION_TESTS = ['.ico', '.bmp', '.mng']
+
 const images = fs.readdirSync(FIXTURES_PATH)
 
 const sortColors = colors => {
@@ -27,7 +29,7 @@ const sortColors = colors => {
 
 images.forEach(image => {
   const extension = path.extname(image)
-  test(extension, async t => {
+  ;(SKIP_EXTENSION_TESTS.includes(extension) ? test.skip : test)(extension, async t => {
     const filepath = path.resolve(path.resolve(FIXTURES_PATH, image))
     const buffer = fs.readFileSync(filepath)
     const colors = await splashy(buffer)
