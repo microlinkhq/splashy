@@ -10,7 +10,7 @@ const fs = require('fs')
 const splashy = require('..')
 const FIXTURES_PATH = path.resolve(__dirname, 'fixtures')
 
-const SKIP_EXTENSION_TESTS = ['.ico', '.bmp', '.mng']
+const SKIP_EXTENSION_TESTS = []
 
 const images = fs.readdirSync(FIXTURES_PATH)
 
