@@ -24,8 +24,9 @@ module.exports = async input => {
   try {
     const vibrant = createVibrant(input)
     swatch = await vibrant.getPalette()
+    debug({ swatch })
   } catch (err) {
-    debug.error('whoops', err)
+    debug.error(err)
     swatch = {}
   }
 
