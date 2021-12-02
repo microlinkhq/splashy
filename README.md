@@ -26,7 +26,7 @@ $ npm install splashy --save
   const got = require('got')
 
   const url = 'https://kikobeats.com/images/avatar.jpg'
-  const { body } = await got(url, { encoding: null })
+  const { body } = await got(url, { responseType: 'buffer' })
   const palette = await splashy(body)
 
   console.log(palette)
