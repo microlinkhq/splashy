@@ -56,7 +56,7 @@
     "hexsorter": "latest",
     "nano-staged": "latest",
     "npm-check-updates": "latest",
-    "nyc": "latest",
+    "c8": "latest",
     "prettier-standard": "latest",
     "simple-git-hooks": "latest",
     "standard": "latest",
@@ -72,7 +72,6 @@
   "scripts": {
     "clean": "rm -rf node_modules",
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "dev": "nodemon --exec \"npm start\" -e \"js\"",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
@@ -83,7 +82,7 @@
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "node index.js",
-    "test": "nyc ava",
+    "test": "c8 ava",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
