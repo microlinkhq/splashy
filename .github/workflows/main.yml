@@ -15,7 +15,7 @@ jobs:
       image: kikobeats/docker-browserless-vips:latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install
         run: npm install --no-package-lock
       - name: Test
