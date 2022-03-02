@@ -2,7 +2,7 @@
   "name": "splashy",
   "description": "Given an image, extract predominant & palette colors",
   "homepage": "https://nicedoc.io/microlinkhq/splashy",
-  "version": "5.1.2",
+  "version": "5.1.3",
   "main": "src/index.js",
   "author": {
     "name": "Kiko Beats",
