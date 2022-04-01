@@ -12,7 +12,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: kikobeats/docker-browserless-vips:latest
+      image: kikobeats/docker-vips:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
