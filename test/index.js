@@ -1,8 +1,6 @@
 'use strict'
 
-const { isEmpty, clone, pull } = require('lodash')
-
-const hexSorter = require('hexsorter')
+const hexColorRegex = require('hex-color-regex')
 const path = require('path')
 const test = require('ava')
 const fs = require('fs')
@@ -10,30 +8,17 @@ const fs = require('fs')
 const splashy = require('..')
 const FIXTURES_PATH = path.resolve(__dirname, 'fixtures')
 
-const SKIP_EXTENSION_TESTS = ['.ico', '.bmp', '.mng']
-
 const images = fs.readdirSync(FIXTURES_PATH)
 
-const sortColors = colors => {
-  const input = clone(colors)
-  const output = []
-
-  while (!isEmpty(input)) {
-    const color = hexSorter.mostBrightColor(input)
-    pull(input, color)
-    output.push(color)
-  }
-
-  return output
-}
+const isHexcolor = hex => hexColorRegex({ strict: true }).test(hex)
 
 images.forEach(image => {
   const extension = path.extname(image)
-  ;(SKIP_EXTENSION_TESTS.includes(extension) ? test.skip : test)(extension, async t => {
+  test(extension, async t => {
     const filepath = path.resolve(path.resolve(FIXTURES_PATH, image))
     const buffer = fs.readFileSync(filepath)
     const colors = await splashy(buffer)
     t.true(colors.length > 0)
-    t.snapshot(sortColors(colors))
+    t.true(colors.every(isHexcolor))
   })
 })
