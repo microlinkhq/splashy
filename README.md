@@ -8,7 +8,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/microlinkhq/splashy.svg?style=flat-square)](https://coveralls.io/github/microlinkhq/splashy)
 [![NPM Status](https://img.shields.io/npm/dm/splashy.svg?style=flat-square)](https://www.npmjs.org/package/splashy)
 
-> Given an image, extract predominant & palette colors. [20+ image formats](https://github.com/microlinkhq/splashy/tree/master/test/fixtures well tested).
+> Given an image, extract predominant & palette colors. [20+ image formats well tested](https://github.com/microlinkhq/splashy/tree/master/test/fixtures).
 
 ## Install
 
