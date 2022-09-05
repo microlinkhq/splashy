@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 5.1.9 (2022-09-05)
+
+
+### Bug Fixes
+
+* linter ([0c83dc3](https://github.com/microlinkhq/splashy/commit/0c83dc345de3772eae44b74ab9d0ad0b4883213c))
+
 ### 5.1.8 (2022-05-15)
 
 ### 5.1.7 (2022-04-11)
