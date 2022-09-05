@@ -22,7 +22,7 @@ class SharpImage extends ImageBase {
       this._image = {
         width: info.width,
         height: info.height,
-        data: data
+        data
       }
 
       return this
