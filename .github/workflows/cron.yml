@@ -1,0 +1,24 @@
+name: cron
+
+on:
+  schedule:
+    # Cron job every day at 12:00
+    # https://crontab.guru/#0_12_*_*_*
+    - cron: '0 0 * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: kikobeats/docker-vips:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - name: Install
+        run: npm install --no-package-lock
+      - name: Test
+        run: npm test
