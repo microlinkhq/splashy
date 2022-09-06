@@ -19,9 +19,9 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
       - name: Install
-        run: npm install --no-package-lock
+        run: npm install --no-package-lock && npm rebuild
       - name: Test
-        run: npm test
+        run: npm -v && node -v && npm test
       - name: Report
         run: mkdir -p coverage && npx c8 report --reporter=text-lcov > coverage/lcov.info
       - name: Coverage
