@@ -11,23 +11,20 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: kikobeats/docker-vips:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_TOKEN }}
-      - name: Install
-        run: npm install --no-package-lock
-      - name: Test
-        run: npm test
-      - name: Report
-        run: mkdir -p coverage && npx c8 report --reporter=text-lcov > coverage/lcov.info
-      - name: Coverage
-        uses: coverallsapp/github-action@master
+      - name: Build
+        uses: docker/build-push-action@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          tags: splashy:latest
+          push: false
+      - uses: addnab/docker-run-action@v3
+        with:
+          image: splashy:latest
+          run: ./node_modules/.bin/ava
 
   release:
     needs: [test]
