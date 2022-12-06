@@ -42,4 +42,5 @@ jobs:
         run: |
           git config --global user.email ${{ secrets.GIT_EMAIL }}
           git config --global user.name ${{ secrets.GIT_USERNAME }}
+          git config --global --add safe.directory /__w/splashy/splashy
           npm run release
