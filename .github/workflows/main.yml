@@ -8,6 +8,9 @@ on:
     branches:
       - master
 
+env:
+  XDG_CACHE_HOME: /tmp
+
 jobs:
   test:
     runs-on: ubuntu-latest
