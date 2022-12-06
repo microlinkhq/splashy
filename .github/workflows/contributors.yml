@@ -1,0 +1,25 @@
+name: contributors
+
+on:
+  schedule:
+    # Cron job every Monday at 12:00
+    # https://crontab.guru/every-monday
+    - cron: '0 0 * * MON'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - name: Install
+        run: npm install --no-package-lock --ignore-scripts
+      - name: Contributors
+        run: npm run contributors
