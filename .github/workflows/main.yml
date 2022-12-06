@@ -8,9 +8,6 @@ on:
     branches:
       - master
 
-env:
-  XDG_CACHE_HOME: /tmp
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -27,11 +24,16 @@ jobs:
           convert --version
           convert -list format
           convert -list configure
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: true
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
       - name: Test
         run: npm test
       - name: Report
