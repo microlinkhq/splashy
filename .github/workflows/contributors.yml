@@ -1,10 +1,9 @@
 name: contributors
 
 on:
-  schedule:
-    # Cron job every Monday at 12:00
-    # https://crontab.guru/every-monday
-    - cron: '0 0 * * MON'
+  pull_request:
+    branches:
+      - master
 
 jobs:
   test:
