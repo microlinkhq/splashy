@@ -24,7 +24,7 @@ jobs:
           convert --version
           convert -list format
           convert -list configure
-          npm install --verbose --foreground-scripts sharp --no-package-lock
+          npm install
       - name: Test
         run: npm test
       - name: Report
