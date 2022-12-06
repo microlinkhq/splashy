@@ -18,7 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
-      - name: Install
-        run: npm install --no-package-lock --ignore-scripts
       - name: Contributors
-        run: npm run contributors
+        run: |
+          git config --global user.email ${{ secrets.GIT_EMAIL }}
+          git config --global user.name ${{ secrets.GIT_USERNAME }}
+          npm run contributors
