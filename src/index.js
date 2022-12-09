@@ -1,5 +1,6 @@
 'use strict'
 
+const { serializeError } = require('serialize-error')
 const debug = require('debug-logfmt')('splashy')
 const createVibrant = require('./vibrant')
 
@@ -24,8 +25,8 @@ module.exports = async input => {
   try {
     const vibrant = createVibrant(input)
     swatch = await vibrant.getPalette()
-  } catch (err) {
-    debug.error(err)
+  } catch (error) {
+    debug.error(serializeError(error))
     swatch = {}
   }
 
