@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 5.1.13 (2022-12-09)
+
+
+### Bug Fixes
+
+* serialize error ([029b3b3](https://github.com/microlinkhq/splashy/commit/029b3b33522816626ff4db587757b463148aab63))
+
 ### 5.1.12 (2022-12-06)
 
 ### 5.1.11 (2022-10-31)
