@@ -1,4 +1,4 @@
-name: test
+name: pull_request
 
 on:
   push:
@@ -10,6 +10,7 @@ on:
 
 jobs:
   test:
+    if: github.ref != 'refs/heads/master'
     runs-on: ubuntu-latest
     container:
       image: kikobeats/docker-vips:latest
@@ -33,14 +34,3 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Release
-        if: ${{ github.ref == 'refs/heads/master' && !startsWith(github.event.head_commit.message, 'chore(release):') && !startsWith(github.event.head_commit.message, 'docs:') }}
-        shell: 'script -q -e -c "bash {0}" > /dev/null'
-        env:
-          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          git config --global user.email ${{ secrets.GIT_EMAIL }}
-          git config --global user.name ${{ secrets.GIT_USERNAME }}
-          git config --global --add safe.directory /__w/splashy/splashy
-          npm run release
