@@ -30,7 +30,7 @@ jobs:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: ${{ github.head_ref }}
 
-  release:
+  test:
     if: ${{ !startsWith(github.event.head_commit.message, 'docs:') && !startsWith(github.event.head_commit.message, 'ci:') }}
     needs: [contributors]
     runs-on: ubuntu-latest
@@ -49,14 +49,27 @@ jobs:
         run: npm install --no-package-lock
       - name: Test
         run: npm test
+
+  release:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - name: Install
+        run: npm install --no-package-lock --ignore-scripts
       - name: Release
-        shell: 'script -q -e -c "bash {0}" > /dev/null'
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           git config --global user.email ${{ secrets.GIT_EMAIL }}
           git config --global user.name ${{ secrets.GIT_USERNAME }}
-          git config --global --add safe.directory /__w/splashy/splashy
           git pull origin master
           npm run release
