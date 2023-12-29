@@ -1,7 +1,7 @@
 {
   "name": "splashy",
   "description": "Given an image, extract predominant & palette colors",
-  "homepage": "https://nicedoc.io/microlinkhq/splashy",
+  "homepage": "https://github.com/microlinkhq/splashy",
   "version": "5.1.30",
   "main": "src/index.js",
   "author": {
