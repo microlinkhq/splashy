@@ -67,7 +67,8 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: true --ignore-scripts
+          run_install: |
+            - args: [--ignore-scripts]
       - name: Release
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GH_TOKEN }}
