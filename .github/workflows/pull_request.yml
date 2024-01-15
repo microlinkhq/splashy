@@ -25,7 +25,7 @@ jobs:
           convert --version
           convert -list format
           convert -list configure
-          DEBUG="*" npm install --no-package-lock --loglevel debug
+          npm install --no-package-lock
       - name: Test
         run: npm test
       - name: Report
