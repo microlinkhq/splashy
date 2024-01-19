@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "debug-logfmt": "~1.2.0",
-    "node-addon-api": "~7.0.0",
+    "node-addon-api": "~7.1.0",
     "node-gyp": "~10.0.1",
     "node-vibrant": "~3.2.1-alpha.1",
     "serialize-error": "~8.1.0",
