@@ -1,9 +1,28 @@
 'use strict'
 
 const quantize = require('@lokesh.dhakar/quantize')
-const { getPixels } = require('ndarray-pixels')
 const tinycolor = require('tinycolor2')
+const ndarray = require('ndarray')
 const sharp = require('sharp')
+
+async function getPixels (buffer) {
+  // Warn for Data URIs, URLs, and file paths. Support removed in v3.
+  if (!(buffer instanceof Uint8Array)) {
+    throw new Error('[ndarray-pixels] Input must be Uint8Array or Buffer.')
+  }
+
+  const { data, info } = await sharp(buffer)
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true })
+
+  return ndarray(
+    new Uint8Array(data),
+    [info.width, info.height, 4],
+    [4, (4 * info.width) | 0, 1],
+    0
+  )
+}
 
 function createPixelArray (pixels, pixelCount, quality) {
   const pixelArray = []
@@ -54,43 +73,20 @@ function validateOptions (options) {
   return { colorCount, quality }
 }
 
-/**
- * Loads and processes an image using sharp
- * @param {Buffer|String} img - Image buffer or path
- * @returns {Promise} Promise resolving to pixel data
- */
-const loadImg = img =>
-  new Promise((resolve, reject) => {
-    sharp(img)
-      .toBuffer()
-      .then(buffer =>
-        sharp(buffer)
-          .metadata()
-          .then(metadata => ({ buffer, format: metadata.format }))
-      )
-      .then(({ buffer, format }) => getPixels(buffer, format))
-      .then(resolve)
-      .catch(reject)
-  })
-
-const toHex = output =>
-  output.map(value => {
-    const [r, g, b] = value
-    return `#${tinycolor({ r, g, b }).toHex()}`
-  })
-
-module.exports = async function (sourceImage, ...args) {
+module.exports = async function (buffer, ...args) {
   const { quality, colorCount } = validateOptions(args)
 
   // Create custom CanvasImage object
-  const imgData = await loadImg(sourceImage)
+  const imgData = await sharp(buffer).toBuffer().then(getPixels)
   const pixelCount = imgData.shape[0] * imgData.shape[1]
   const pixelArray = createPixelArray(imgData.data, pixelCount, quality)
 
   // Send array to quantize function which clusters values
   // using median cut algorithm
   const cmap = quantize(pixelArray, colorCount)
-  const palette = cmap ? cmap.palette() : null
 
-  return toHex(palette)
+  return cmap.palette().map(value => {
+    const [r, g, b] = value
+    return `#${tinycolor({ r, g, b }).toHex()}`
+  })
 }
