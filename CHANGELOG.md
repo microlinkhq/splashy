@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-0](https://github.com/microlinkhq/splashy/compare/v5.1.47...v6.0.0-0) (2024-12-10)
+
+
+### Bug Fixes
+
+* dependencies ([cd098f4](https://github.com/microlinkhq/splashy/commit/cd098f4610ff2ab4803faa1f2131f0fe59ed2756))
+
 ### 5.1.47 (2024-12-05)
 
 ### 5.1.46 (2024-12-03)
