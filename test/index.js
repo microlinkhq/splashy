@@ -9,10 +9,15 @@ const splashy = require('..')
 
 const isHexcolor = hex => hexColorRegex({ strict: true }).test(hex)
 
-test('jpg', async t => {
-  const filepath = path.join(__dirname, '../benchmark/fixtures/image-1.jpg')
+const paletteUrl = palette =>
+  `https://splashy-palette.vercel.app/${palette.map(i => i.slice(1)).join('-')}`
+
+test('bmp', async t => {
+  const filepath = path.join(__dirname, '../benchmark/fixtures/image-1.bmp')
   const buffer = await readFile(filepath)
   const palette = await splashy(buffer)
+
+  console.log(paletteUrl(palette))
 
   t.true(palette.length > 0)
   t.true(palette.every(isHexcolor))
@@ -36,6 +41,7 @@ test('png', async t => {
   const buffer = await readFile(filepath)
   const palette = await splashy(buffer)
 
+  console.log(paletteUrl(palette))
   t.true(palette.length > 0)
   t.true(palette.every(isHexcolor))
 

@@ -4,12 +4,7 @@ const quantize = require('@lokesh.dhakar/quantize')
 const ndarray = require('ndarray')
 const sharp = require('sharp')
 
-async function getPixels (buffer) {
-  const { data, info } = await sharp(buffer)
-    .ensureAlpha()
-    .raw()
-    .toBuffer({ resolveWithObject: true })
-
+async function getPixels ({ data, info }) {
   return ndarray(
     new Uint8Array(data.buffer, data.byteOffset, data.length),
     [info.width, info.height, 4],
@@ -39,7 +34,14 @@ function createPixelArray (pixels, pixelCount, quality = 10) {
 const toHex = ([r, g, b]) => '#' + (b | (g << 8) | (r << 16) | (1 << 24)).toString(16).slice(1)
 
 module.exports = async function (buffer) {
-  const imgData = await getPixels(await sharp(buffer).toBuffer())
+  const raw = await sharp(buffer)
+    // resizing the image before processing leads to more consistent (and much shorter) processing times.
+    // .resize(200, 200, { fit: 'inside', withoutEnlargement: true })
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true })
+
+  const imgData = await getPixels(raw)
   const pixelCount = imgData.shape[0] * imgData.shape[1]
   const pixelArray = createPixelArray(imgData.data, pixelCount)
   const cmap = quantize(pixelArray, 10) // internal tuning
