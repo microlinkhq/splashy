@@ -22,7 +22,7 @@ $ npm install splashy --save
 ### From URL
 
 ```js
-(async () => {
+;(async () => {
   const splashy = require('splashy')
   const got = require('got')
 
@@ -38,7 +38,7 @@ $ npm install splashy --save
 ### From Buffer
 
 ```js
-(async () => {
+;(async () => {
   const splashy = require('splashy')
   const path = require('path')
   const fs = require('fs')
@@ -58,7 +58,7 @@ $ npm install splashy --save
 
 #### input
 
-*Required*<br>
+_Required_<br>
 Type: [ImageSource](https://github.com/akfish/node-vibrant#imagesource)
 
 The raw content for detecting the color information.
@@ -71,7 +71,9 @@ The raw content for detecting the color information.
 ## License
 
 **microlink-function** © [Microlink](https://microlink.io), released under the [MIT](https://github.com/microlink/microlink-function/blob/master/LICENSE.md) License.<br>
+
 Authored and maintained by [Kiko Beats](https://kikobeats.com) with help from [contributors](https://github.com/microlink/microlink-function/contributors).
 
-> [microlink.io](https://microlink.io) · GitHub [microlinkhq](https://github.com/microlinkhq) · X [@microlinkhq](https://x.com/microlinkhq)
+Special thanks to [Tim Carry](https://github.com/pixelastic) for writing the benchmark and [Lokesh Dhakar](https://github.com/lokesh) for the original code implementation.
 
+> [microlink.io](https://microlink.io) · GitHub [microlinkhq](https://github.com/microlinkhq) · X [@microlinkhq](https://x.com/microlinkhq)
