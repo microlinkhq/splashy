@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'fs/promises'
+import { fileURLToPath } from 'node:url'
 import colorthief from 'colorthief'
 import Vibrant from 'node-vibrant'
-import tinycolor from 'tinycolor2'
 import { chain } from 'lodash-es'
 import { readdirSync } from 'fs'
 import mql from '@microlink/mql'
@@ -9,7 +9,9 @@ import path from 'node:path'
 
 import splashy from '../src/index.js'
 
-const __dirname = import.meta.dirname
+const { toHex } = splashy
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const images = readdirSync(path.resolve(__dirname, 'fixtures')).map(filename =>
   path.resolve(__dirname, 'fixtures', filename)
@@ -36,10 +38,7 @@ async function getPaletteWithNodeVibrant (filepath) {
     .map()
     .sortBy('_population')
     .reverse()
-    .map(value => {
-      const [r, g, b] = value._rgb
-      return tinycolor({ r, g, b }).toHex()
-    })
+    .map(value => toHex(value._rgb))
     .value()
 }
 
@@ -54,14 +53,7 @@ async function getPaletteWithSplashy (filepath) {
 async function getPaletteWithColorthief (filepath) {
   const buffer = await readFile(filepath)
   const colorthiefPalette = await colorthief.getPalette(buffer)
-  const result = chain(colorthiefPalette)
-    .map(value => {
-      const [r, g, b] = value
-      return tinycolor({ r, g, b }).toHex()
-    })
-    .value()
-
-  return result
+  return colorthiefPalette.map(toHex)
 }
 
 const output = []
@@ -77,21 +69,34 @@ for (const [index, imagePath] of images.entries()) {
 
   const nodeVibrantPalette = await getPaletteWithNodeVibrant(filepath)
   const vibrantScreenshotUrl = await screenshotUrl(nodeVibrantPalette)
-  await writeFile(path.resolve(__dirname, 'output', `node-vibrant-${displayIndex}.png`), await download(vibrantScreenshotUrl))
+  await writeFile(
+    path.resolve(__dirname, 'output', `node-vibrant-${displayIndex}.png`),
+    await download(vibrantScreenshotUrl)
+  )
   output.push('### Palette by `node-vibrant`')
-  output.push(`[![node-vibrant](./output/node-vibrant-${displayIndex}.png)](${vibrantScreenshotUrl})`)
+  output.push(
+    `[![node-vibrant](./output/node-vibrant-${displayIndex}.png)](${vibrantScreenshotUrl})`
+  )
 
   const splashyPalette = await getPaletteWithSplashy(filepath)
   const splashyLinkScreenshotUrl = await screenshotUrl(splashyPalette)
-  await writeFile(path.resolve(__dirname, 'output', `splashy-${displayIndex}.png`), await download(splashyLinkScreenshotUrl))
+  await writeFile(
+    path.resolve(__dirname, 'output', `splashy-${displayIndex}.png`),
+    await download(splashyLinkScreenshotUrl)
+  )
   output.push('### Palette by `splashy`')
   output.push(`[![splashy](./output/splashy-${displayIndex}.png)](${splashyLinkScreenshotUrl})`)
 
   const colorthiefPalette = await getPaletteWithColorthief(filepath)
   const colorthiefScreenshotUrl = await screenshotUrl(colorthiefPalette)
-  await writeFile(path.resolve(__dirname, 'output', `colorthief-${displayIndex}.png`), await download(colorthiefScreenshotUrl))
+  await writeFile(
+    path.resolve(__dirname, 'output', `colorthief-${displayIndex}.png`),
+    await download(colorthiefScreenshotUrl)
+  )
   output.push('### Palette by `colorthief`')
-  output.push(`[![colorthief](./output/colorthief-${displayIndex}.png)](${colorthiefScreenshotUrl})`)
+  output.push(
+    `[![colorthief](./output/colorthief-${displayIndex}.png)](${colorthiefScreenshotUrl})`
+  )
 }
 
 const readmeContent = `

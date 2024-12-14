@@ -47,3 +47,5 @@ module.exports = async function (buffer) {
   const cmap = quantize(pixelArray, 10) // internal tuning
   return cmap.palette().slice(0, 6).map(toHex)
 }
+
+module.exports.toHex = toHex
