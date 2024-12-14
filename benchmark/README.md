@@ -11,15 +11,15 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `node-vibrant`
 
-[![node-vibrant](./output/node-vibrant-1.png)](https://iad.microlink.io/YI5YEjpXMcL3uBvX-1qfijVqCVqL1raODwHwIGxyDc16QBMpe1HCzWja_kWsAwSzkHcBGfwA5TK5mEttcZP5Xg.png)
+[![node-vibrant](./output/node-vibrant-1.png)](https://iad.microlink.io/09pRn8QBQqzcE10SDzi0Pzr28AJ0wylrt6674C7t_k_epUHqUEK9oS3aO9fUZwMtnP4MM3zRezx8L_DfbgrXOA.png)
 
 ### Palette by `splashy`
 
-[![splashy](./output/splashy-1.png)](https://iad.microlink.io/s6vwWntNwc7IBNEWCP0WQNeNI2YSuYA5ENYtnI2040ajEES7CWhncPtHRzAXNUYqAdkrVU2-cUscAES-h-KisQ.png)
+[![splashy](./output/splashy-1.png)](https://iad.microlink.io/eBuqBYZboCokaAgyD53pnAqW7x8wPgI0AYMKSEsZTDUbvFwTBlRoT5xcoq4ooz0YCtyHjnOA_Glt8kbDBhKn7A.png)
 
 ### Palette by `colorthief`
 
-[![colorthief](./output/colorthief-1.png)](https://iad.microlink.io/P1qJ8ytLoCF56_Res_9rj2sfxgH5xqdDBgL7yRBqAVUQufxLEQcCSwCKwjKJJKqKxmZFkUAwk-dyg3d8i91y-g.png)
+[![colorthief](./output/colorthief-1.png)](https://iad.microlink.io/oY9RIn21q1TZakZMFfukK-ZhcRcHxritAEcNFRyTR5i9RTzRJ66mMLU_2uU9435ByfCmFMQPWpsbN5rNzAw70Q.png)
 
 ## Test 2
 
@@ -29,15 +29,15 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `node-vibrant`
 
-[![node-vibrant](./output/node-vibrant-2.png)](https://iad.microlink.io/-M6aq78lidPSsKz-ry-8KWvtqceKsffzGvVtuWP291cfuq7WJtQMN5sTrDaJpAT5vh-Flx3KcJxG1XiCkKWEdw.png)
+[![node-vibrant](./output/node-vibrant-2.png)](https://iad.microlink.io/jXMzy3IZpu7t7_hKjZ4JEEEmZcU3llcgxsfs73po0yqd2rhTB2JFbRjSC4umzfEHnpeMVJJNDXzNmdgIr8Z2kg.png)
 
 ### Palette by `splashy`
 
-[![splashy](./output/splashy-2.png)](https://iad.microlink.io/k7EjFCx4_oYy125AVYgAZ4huJ5ZdEPtwxPrEcaeb7fE5xmFHtBAgaY-kwdsu-mt1c76j6erKo2jcTlWXTU9BnQ.png)
+[![splashy](./output/splashy-2.png)](https://iad.microlink.io/ZjX6TEkXSpMXPoT2BxMHfc4Eya5qgJr-RJk5Sk2GPabEhT5hmamzYH11GP9BMu0oEYBgpwHpDQLFItns9dgIzg.png)
 
 ### Palette by `colorthief`
 
-[![colorthief](./output/colorthief-2.png)](https://iad.microlink.io/SXylpwrZXRJNx7ZxsZ9GsZC80Znq7pOFZkngPuDZ2bDW3Ep7pSUj4dmgMODAfTOQgD6ee-MWqoEjHna-SJ9Slg.png)
+[![colorthief](./output/colorthief-2.png)](https://iad.microlink.io/CHo-y9RRgfVhhYXVTdkT4n93z3uZjY4bk8TZt4MqdowdFfd5-XEVakjbJNJhd2KTWzaqLKw2OgQpiFRfvAk7zQ.png)
 
 ## Test 3
 
@@ -47,7 +47,7 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `node-vibrant`
 
-[![node-vibrant](./output/node-vibrant-3.png)](https://iad.microlink.io/vGrdjDz9fJta1zDPuLq_z2YmQIDXcfDsi98fzR86C0yZmUnnibs-0MlOCTVZiKzlQ2nOQ2lJ9jELoe84_FNHbQ.png)
+[![node-vibrant](./output/node-vibrant-3.png)](https://iad.microlink.io/iuWlt37UxGF8qgBKJEHCbo_Hkdep_v-CRageoXOAPMb9lM7ah18HP1dIpqmnHjWVy_d22NCJOBeAk35A7J2hkw.png)
 
 ### Palette by `splashy`
 
@@ -55,7 +55,7 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `colorthief`
 
-[![colorthief](./output/colorthief-3.png)](https://iad.microlink.io/YlY8MtY-_qAeHvnUz3F9m46uPnqF1tVAWBFGTFjGdVSxpJ7nv1ZOu1a3Y4o-oiRei0RGL5nkngAQe5V4cjWSrQ.png)
+[![colorthief](./output/colorthief-3.png)](https://iad.microlink.io/SJdrel7u9Cf8_IiV9nWfYtsaEnFEETIY37JEsFJIiVnaX39j93KTmAI45Nu1-lSRqW4NGgBbGw47hbM5j-WwDw.png)
 
 ## Test 4
 
@@ -65,7 +65,7 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `node-vibrant`
 
-[![node-vibrant](./output/node-vibrant-4.png)](https://iad.microlink.io/rDBWklXfNjAaAMrvYmew2Bze1jOgfWL9DcvvNkwIgEx3ikNao50yhNWErGCjzb2WCcQjwwUoR_j_6c5DSv8S7g.png)
+[![node-vibrant](./output/node-vibrant-4.png)](https://iad.microlink.io/HE7HRM1DY45OAWb_wLH7cNxCE55FGUWwvNNgMEJ0dTz4lbSYLf0bT5xiVvdbjEy4GPk3Sy3gz0H-iuK8ZkYBAQ.png)
 
 ### Palette by `splashy`
 
@@ -73,4 +73,4 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `colorthief`
 
-[![colorthief](./output/colorthief-4.png)](https://iad.microlink.io/o-wvSErFFlnTWQUm23G6oO1hulMD97FXxYvM20pXIi3MR1iqTLUrGXiVga3Z1jZWHIlqz5clw-rcYzu99VYX3Q.png)
+[![colorthief](./output/colorthief-4.png)](https://iad.microlink.io/v0nBKof7Zh9ldqJGy8Pgzqit2lnoPH01HdQBioCwGPsIRNOlZ3Dz9S1DP6lyV8napjhZboVFWeWLuedAtStXWw.png)
