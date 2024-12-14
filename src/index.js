@@ -15,17 +15,15 @@ async function getPixels ({ data, info }) {
 
 function createPixelArray (pixels, pixelCount, quality = 10) {
   const pixelArray = []
-
   for (let i = 0, offset; i < pixelCount; i += quality) {
     offset = i * 4
     const r = pixels[offset]
     const g = pixels[offset + 1]
     const b = pixels[offset + 2]
     const a = pixels[offset + 3]
-
-    if ((a === undefined || a >= 125) && !(r > 250 && g > 250 && b > 250)) {
-      pixelArray.push([r, g, b])
-    }
+    const isOpaqueEnough = a >= 125
+    const isWhite = r > 250 && g > 250 && b > 250
+    if (isOpaqueEnough && !isWhite) pixelArray.push([r, g, b])
   }
 
   return pixelArray
