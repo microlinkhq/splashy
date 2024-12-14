@@ -7,13 +7,14 @@ const fs = require('fs')
 
 const { isHexcolor } = require('./util')
 const splashy = require('..')
-const FIXTURES_PATH = path.resolve(__dirname, 'fixtures')
+const FIXTURES_PATH = path.resolve(__dirname, '../benchmark/fixtures')
 
 const images = fs.readdirSync(FIXTURES_PATH)
 
+console.log(images)
+
 images.forEach(image => {
-  const extension = path.extname(image)
-  test(extension, async t => {
+  test(image, async t => {
     const filepath = path.resolve(path.resolve(FIXTURES_PATH, image))
     const buffer = await readFile(filepath)
     const colors = await splashy(buffer)
