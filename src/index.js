@@ -1,6 +1,6 @@
 'use strict'
 
-const quantize = require('@lokesh.dhakar/quantize')
+const quantize = require('@lokesh.dhakar/quantize').default || require('@lokesh.dhakar/quantize')
 const ndarray = require('ndarray')
 const sharp = require('sharp')
 
