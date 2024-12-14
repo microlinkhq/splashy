@@ -8,9 +8,10 @@ export default function ColorVisualizer () {
   const pathname = usePathname()
   const router = useRouter()
 
-  const getColorsFromUrl = () => {
-    return pathname?.split('/').pop()?.split('-') || []
-  }
+  const getColorsFromUrl = () =>
+    (pathname?.split('/').pop()?.split('-') || []).map(color =>
+      color.startsWith('%23') ? color.slice(3) : color
+    )
 
   const isLightColor = (hexColor: string) => {
     const r = parseInt(hexColor.slice(0, 2), 16)

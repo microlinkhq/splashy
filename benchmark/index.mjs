@@ -17,7 +17,8 @@ const images = readdirSync(path.resolve(__dirname, 'fixtures')).map(filename =>
   path.resolve(__dirname, 'fixtures', filename)
 )
 
-const paletteUrl = palette => `https://splashy-palette.vercel.app/${palette.join('-')}`
+const paletteUrl = palette =>
+  `https://splashy-palette.vercel.app/${palette.map(i => encodeURIComponent(i)).join('-')}`
 
 const screenshotUrl = async palette => {
   const url = paletteUrl(palette)
