@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-2](https://github.com/microlinkhq/splashy/compare/v6.0.0-1...v6.0.0-2) (2024-12-14)
+
+
+### Bug Fixes
+
+* quantizer bundling ([ce3c082](https://github.com/microlinkhq/splashy/commit/ce3c082f3a7a8100d7088963af875d23ae01fd62))
+
 ## [6.0.0-1](https://github.com/microlinkhq/splashy/compare/v6.0.0-0...v6.0.0-1) (2024-12-14)
 
 ## [6.0.0-0](https://github.com/microlinkhq/splashy/compare/v5.1.47...v6.0.0-0) (2024-12-10)
