@@ -2,7 +2,7 @@
   "name": "splashy",
   "description": "Given an image, extract predominant & palette colors",
   "homepage": "https://github.com/microlinkhq/splashy",
-  "version": "5.1.47",
+  "version": "6.0.0-3",
   "main": "src/index.js",
   "author": {
     "name": "Kiko Beats",
@@ -28,6 +28,7 @@
   "keywords": [
     "canvas",
     "color",
+    "colorthief",
     "colour",
     "dominant",
     "extract",
@@ -41,7 +42,9 @@
     "url"
   ],
   "dependencies": {
+    "@lokesh.dhakar/quantize": "~1.4.0",
     "debug-logfmt": "~1.2.3",
+    "ndarray": "~1.0.19",
     "node-addon-api": "~8.3.0",
     "node-gyp": "~11.0.0",
     "node-vibrant": "~3.2.1-alpha.1",
@@ -77,7 +80,6 @@
     "dev": "nodemon --exec \"npm start\" -e \"js\"",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
-    "preinstall": "npx bin-version-check-cli magick \">=7\"",
     "pretest": "npm run lint",
     "release": "standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
@@ -86,6 +88,12 @@
     "test": "c8 ava"
   },
   "license": "MIT",
+  "ava": {
+    "files": [
+      "test/**/*.js",
+      "!test/util.js"
+    ]
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"

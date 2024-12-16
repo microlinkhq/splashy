@@ -30,3 +30,5 @@ coverage
 # Other
 ############################
 .node_history
+.vercel
+website/.next

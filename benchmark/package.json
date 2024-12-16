@@ -1,0 +1,9 @@
+{
+  "name": "@splashy/benchmark",
+  "private": true,
+  "devDependencies": {
+    "@microlink/mql": "~0.13.12",
+    "colorthief": "~2.6.0",
+    "lodash-es": "~4.17.21"
+  }
+}
