@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 export const Footer = () => {
   const pathname = usePathname()
   return (
-    <footer className='py-4 w-full text-neutral-600 fixed bottom-0 bg-slate-50 bg-opacity-10 backdrop-blur'>
+    <footer className='py-6 w-full text-neutral-600 fixed bottom-0 bg-slate-50 bg-opacity-10 backdrop-blur'>
       <nav>
         <ul className='flex justify-center space-x-4'>
           {[
