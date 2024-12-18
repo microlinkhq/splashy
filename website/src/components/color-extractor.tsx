@@ -45,7 +45,7 @@ export function ColorExtractor () {
   const { toast } = useToast()
   const copyToClipboard = creatCopyToClipboard(toast)
 
-  const [imageUrl, setImageUrl] = useState('')
+  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined)
   const [colors, setColors] = useState<ColorFormat[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -111,7 +111,7 @@ export function ColorExtractor () {
             >
               <input
                 type='url'
-                value={imageUrl}
+                value={undefined}
                 onChange={e => setImageUrl(e.target.value)}
                 onClick={handleFormClick}
                 placeholder='or paste an image URL'
@@ -145,12 +145,8 @@ export function ColorExtractor () {
                 <div
                   onClick={() => copyToClipboard(color.hex, `Color ${color.hex}`)}
                   key={index}
-                  className='cursor-pointer rounded-lg shadow-md'
-                  style={{
-                    height: '6rem',
-                    width: '6rem',
-                    backgroundColor: color.hex
-                  }}
+                  className='cursor-pointer rounded-lg shadow-md lg:h-24 lg:w-24 h-20 w-20'
+                  style={{ backgroundColor: color.hex }}
                 >
                   <div className='w-full h-full flex items-end justify-center p-1 bg-gradient-to-t from-black/50 to-transparent rounded-lg pb-2'>
                     <span className='text-xs text-white font-medium'>
@@ -163,14 +159,14 @@ export function ColorExtractor () {
           </div>
           <div className='space-x-2 flex items-center justify-center'>
             <Button
-              onClick={() => copyToClipboard(generateCSSVariables(colors))}
+              onClick={() => copyToClipboard(generateCSSVariables(colors), 'CSS Variables')}
               className='w-auto'
               variant='default'
             >
               Copy as CSS
             </Button>
             <Button
-              onClick={() => copyToClipboard(generateJSONObject(colors))}
+              onClick={() => copyToClipboard(generateJSONObject(colors), 'JSON')}
               className='w-auto'
               variant='secondary'
             >
