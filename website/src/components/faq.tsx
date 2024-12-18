@@ -19,7 +19,7 @@ export function FAQ () {
   const copyToClipboard = creatCopyToClipboard(toast)
 
   return (
-    <section id='faq' className='space-y-8 pb-24'>
+    <section id='faq' className='space-y-8'>
       <div className='space-y-6'>
         <div>
           <h3 className='text-xl font-semibold mb-6'>What is Splashy?</h3>
@@ -46,7 +46,7 @@ export function FAQ () {
           </p>
           <Code
             className='pt-6 cursor-pointer'
-            onClick={() => copyToClipboard(microlinkSnippet, 'npm install')}
+            onClick={() => copyToClipboard('npm install splashy --save', 'npm install')}
           >
             npm install splashy --save
           </Code>
@@ -65,7 +65,12 @@ export function FAQ () {
             <Link href='https://microlink.io/docs/api/getting-started/overview'>Microlink API</Link>{' '}
             is already provisioned and ready to be used passing `palette` query parameter:
           </p>
-          <Code className='pt-6'>{microlinkSnippet}</Code>
+          <Code
+            className='pt-6 cursor-pointer'
+            onClick={() => copyToClipboard(microlinkSnippet, 'microlink snippet')}
+          >
+            {microlinkSnippet}
+          </Code>
           <p className='pt-6'>We recommend to consume splashy from Microlink API.</p>
         </div>
         <div>

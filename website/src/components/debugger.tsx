@@ -64,12 +64,6 @@ export function Debugger () {
             <Button onClick={handleVisualize}>Visualize</Button>
           </div>
         </div>
-        <div className='mt-8 text-center text-gray-600 dark:text-gray-400'>
-          <p>Adjust the colors above or click &apos;Randomize&apos; for a surprise palette.</p>
-          <p>
-            When you&apos;re ready, click &apos;Visualize&apos; to see your palette in full screen!
-          </p>
-        </div>
       </main>
     </div>
   )

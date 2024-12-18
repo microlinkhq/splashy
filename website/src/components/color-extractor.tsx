@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
+import { creatCopyToClipboard } from '@/lib/copy-to-clipboard'
 import { Loader2, RefreshCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useToast } from '@/hooks/use-toast'
-import { creatCopyToClipboard } from '@/lib/copy-to-clipboard'
+import { useState } from 'react'
 
 interface ColorFormat {
   rgb: string
@@ -45,41 +45,38 @@ export function ColorExtractor () {
   const { toast } = useToast()
   const copyToClipboard = creatCopyToClipboard(toast)
 
-  const [imageUrl, setImageUrl] = useState('')
+  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined)
   const [colors, setColors] = useState<ColorFormat[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
-  const onDrop = useCallback(async (acceptedFiles: File[]) => {
+  const onDrop = async (acceptedFiles: File[]) => {
     const formData = new FormData()
-    const base64data = await getBase64(acceptedFiles[0])
     formData.append('file', acceptedFiles[0])
     await processFiles(formData)
-    await setImageUrl(base64data)
-  }, [])
+  }
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
   const handleUrlSubmit = async (e: React.FormEvent) => {
-    console.log('ola puto')
     e.preventDefault()
     if (imageUrl) {
-      console.log('TODO')
-      // await processFiles(imageUrl)
+      const res = await fetch(imageUrl)
+      const buffer = Buffer.from(await res.arrayBuffer())
+      const formData = new FormData()
+      formData.append('file', new Blob([buffer]))
+      await processFiles(formData)
     }
   }
 
   const processFiles = async (formData: FormData) => {
-    setIsLoading(true)
     const res = await fetch('/api/', {
       method: 'POST',
       body: formData
     })
 
-    const palette = await res.json()
-    console.log(palette)
-    setColors(palette)
+    setColors(await res.json())
+    if (!imageUrl) setImageUrl(await getBase64(formData.get('file') as File))
     setIsLoading(false)
-    setImageUrl('') // Clear the input field after processing
   }
 
   const resetState = () => {
@@ -93,40 +90,45 @@ export function ColorExtractor () {
   }
 
   return (
-    <div className=''>
+    <div className='lg:w-full w-[90%] mx-auto'>
       {colors.length === 0 ? (
         <div>
           <div
             {...getRootProps()}
-            className='border-2 rounded-2xl h-[400px] flex flex-col items-center justify-center cursor-pointer border-primary bg-primary/5'
+            className='border-2 rounded-2xl lg:h-[400px] h-[200px] flex flex-col items-center justify-center cursor-pointer border-primary bg-primary/5'
           >
             <input {...getInputProps()} />
-            <p className='text-2xl lg:text-4xl font-bold text-primary'>DRAG AN IMAGE HERE</p>
+            <p className='text-2xl lg:text-4xl font-bold text-primary'>
+              {isLoading && <Loader2 className='animate-spin h-10 w-10' />}
+              {!isLoading && 'DRAG AN IMAGE HERE'}
+            </p>
           </div>
-          <form
-            onSubmit={handleUrlSubmit}
-            onClick={handleFormClick}
-            className='flex pt-4 space-x-3 items-center'
-          >
-            <input
-              type='url'
-              value={imageUrl}
-              onChange={e => setImageUrl(e.target.value)}
+          {!isLoading && (
+            <form
+              onSubmit={handleUrlSubmit}
               onClick={handleFormClick}
-              placeholder='or paste an image URL'
-              className='flex-grow px-4 py-2 border-2 border-zinc-400 hover:border-primary focus:border-primary hover:outline-none focus:outline-none rounded-lg h-10'
-            />
-            <Button
-              type='submit'
-              variant='outline'
-              className='border-2 hover:border-primary hover:text-primary font-bold h-10 border-zinc-400 text-zinc-400'
-              disabled={isLoading}
-              onClick={handleFormClick}
+              className='flex flex-col lg:flex-row pt-4 lg:space-x-3 items-center'
             >
-              {isLoading && <Loader2 className='animate-spin' />}
-              {isLoading ? 'HOLD ON...' : 'DO IT'}
-            </Button>
-          </form>
+              <input
+                type='url'
+                value={undefined}
+                onChange={e => setImageUrl(e.target.value)}
+                onClick={handleFormClick}
+                placeholder='or paste an image URL'
+                className='flex-grow px-4 py-2 border-2 border-zinc-400 hover:border-primary focus:border-primary hover:outline-none focus:outline-none rounded-lg h-10 w-full'
+              />
+              <Button
+                type='submit'
+                variant='outline'
+                className='border-2 hover:border-primary hover:text-primary font-bold h-10 border-zinc-400 text-zinc-400 w-full lg:w-[inherit] lg:mt-0 mt-2'
+                disabled={isLoading}
+                onClick={handleFormClick}
+              >
+                {isLoading && <Loader2 className='animate-spin' />}
+                {isLoading ? 'HOLD ON...' : 'DO IT'}
+              </Button>
+            </form>
+          )}
         </div>
       ) : (
         <div className='flex justify-center items-center flex-col space-y-4'>
@@ -143,12 +145,8 @@ export function ColorExtractor () {
                 <div
                   onClick={() => copyToClipboard(color.hex, `Color ${color.hex}`)}
                   key={index}
-                  className='cursor-pointer rounded-lg shadow-md'
-                  style={{
-                    height: '6rem',
-                    width: '6rem',
-                    backgroundColor: color.hex
-                  }}
+                  className='cursor-pointer rounded-lg shadow-md lg:h-24 lg:w-24 h-20 w-20'
+                  style={{ backgroundColor: color.hex }}
                 >
                   <div className='w-full h-full flex items-end justify-center p-1 bg-gradient-to-t from-black/50 to-transparent rounded-lg pb-2'>
                     <span className='text-xs text-white font-medium'>
@@ -161,14 +159,14 @@ export function ColorExtractor () {
           </div>
           <div className='space-x-2 flex items-center justify-center'>
             <Button
-              onClick={() => copyToClipboard(generateCSSVariables(colors))}
+              onClick={() => copyToClipboard(generateCSSVariables(colors), 'CSS Variables')}
               className='w-auto'
               variant='default'
             >
               Copy as CSS
             </Button>
             <Button
-              onClick={() => copyToClipboard(generateJSONObject(colors))}
+              onClick={() => copyToClipboard(generateJSONObject(colors), 'JSON')}
               className='w-auto'
               variant='secondary'
             >
