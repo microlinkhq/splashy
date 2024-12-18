@@ -69,11 +69,11 @@ export function ColorExtractor () {
   }
 
   const processFiles = async (formData: FormData) => {
+    setIsLoading(true)
     const res = await fetch('/api/', {
       method: 'POST',
       body: formData
     })
-
     setColors(await res.json())
     if (!imageUrl) setImageUrl(await getBase64(formData.get('file') as File))
     setIsLoading(false)
@@ -130,25 +130,21 @@ export function ColorExtractor () {
           )}
         </div>
       ) : (
-        <div className='flex justify-center items-center flex-col space-y-4'>
+        <div className='flex justify-center items-center flex-col lg:space-y-0 space-y-4'>
           <img src={imageUrl} alt='Uploaded image' className='w-full h-auto rounded-lg shadow-md' />
-          <div>
-            <div className='py-6 inline-grid grid-cols-3 gap-2 justify-center'>
-              {colors.map((color, index) => (
-                <div
-                  onClick={() => copyToClipboard(color.hex, `Color ${color.hex}`)}
-                  key={index}
-                  className='cursor-pointer rounded-lg shadow-md lg:h-24 lg:w-24 h-20 w-20'
-                  style={{ backgroundColor: color.hex }}
-                >
-                  <div className='w-full h-full flex items-end justify-center p-1 bg-gradient-to-t from-black/50 to-transparent rounded-lg pb-2'>
-                    <span className='text-xs text-white font-medium'>
-                      {color.hex.toUpperCase()}
-                    </span>
-                  </div>
+          <div className='py-6 inline-grid lg:grid-cols-6 grid-cols-3 gap-2'>
+            {colors.map((color, index) => (
+              <div
+                onClick={() => copyToClipboard(color.hex, `Color ${color.hex}`)}
+                key={index}
+                className='cursor-pointer rounded-lg shadow-md h-20 w-20'
+                style={{ backgroundColor: color.hex }}
+              >
+                <div className='w-full h-full flex items-end justify-center p-1 bg-gradient-to-t from-black/20 to-transparent rounded-lg pb-2'>
+                  <span className='text-xs text-white font-medium'>{color.hex.toUpperCase()}</span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
           <div className='space-x-2 flex items-center justify-center'>
             <Button
