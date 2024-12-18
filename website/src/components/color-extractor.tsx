@@ -90,7 +90,7 @@ export function ColorExtractor () {
   }
 
   return (
-    <div className='lg:w-full w-[90%] mx-auto'>
+    <div>
       {colors.length === 0 ? (
         <div>
           <div
@@ -111,7 +111,6 @@ export function ColorExtractor () {
             >
               <input
                 type='url'
-                value={undefined}
                 onChange={e => setImageUrl(e.target.value)}
                 onClick={handleFormClick}
                 placeholder='or paste an image URL'
@@ -132,13 +131,7 @@ export function ColorExtractor () {
         </div>
       ) : (
         <div className='flex justify-center items-center flex-col space-y-4'>
-          <div className='w-full max-w-[200px] mx-auto'>
-            <img
-              src={imageUrl}
-              alt='Uploaded image'
-              className='w-full h-auto rounded-lg shadow-md'
-            />
-          </div>
+          <img src={imageUrl} alt='Uploaded image' className='w-full h-auto rounded-lg shadow-md' />
           <div>
             <div className='py-6 inline-grid grid-cols-3 gap-2 justify-center'>
               {colors.map((color, index) => (

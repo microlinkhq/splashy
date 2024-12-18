@@ -92,24 +92,27 @@ export const ContainerLayout = ({ children }: { children: React.ReactNode }) => 
         <div className='blur-[106px] h-32 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700' />
         <div className='blur-[106px] h-24 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600' />
       </div>
-      <header className='container pt-8 max-w-xl mx-auto px-4 text-center z-10 relative'>
-        <NextLink href='/' className='flex justify-center'>
-          <SplashyLogo className='mb-3 lg:w-80 w-56' />
-          {/* <img src='/logo.svg' alt='favicon' className='inline mb-3' /> */}
-          {/* <h1 className='text-5xl lg:text-8xl font-extrabold mb-3 tracking-tight bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700'>
+      <div className='lg:max-w-xl max-w-sm mx-auto px-4'>
+        <header className='container pt-8 text-center z-10 relative'>
+          <NextLink href='/' className='flex justify-center'>
+            <SplashyLogo className='mb-3 lg:w-80 w-56' />
+            {/* <img src='/logo.svg' alt='favicon' className='inline mb-3' /> */}
+            {/* <h1 className='text-5xl lg:text-8xl font-extrabold mb-3 tracking-tight bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700'>
             SPLASHY
           </h1> */}
-        </NextLink>
+          </NextLink>
 
-        <p className='lg:text-xl'>Get predominant colors for any image.</p>
-        <p className='text-neutral-600 pt-2 flex items-center justify-center'>
-          Powered by{' '}
-          <Link href='https://microlink.io'>
-            <MicrolinkLogo className='inline h-4 mx-2' /> Microlink.io
-          </Link>
-        </p>
-      </header>
-      <main className='pt-8 max-w-xl mx-auto px-4 pb-24'>{children}</main>
+          <p className='lg:text-xl'>Get predominant colors for any image.</p>
+          <p className='text-neutral-600 pt-2 flex items-center justify-center'>
+            Powered by{' '}
+            <Link href='https://microlink.io'>
+              <MicrolinkLogo className='inline h-4 mx-2' /> Microlink.io
+            </Link>
+          </p>
+        </header>
+        <main className='pt-8 pb-24'>{children}</main>
+      </div>
+
       <Toaster />
       <Footer />
     </div>
