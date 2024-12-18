@@ -3,15 +3,13 @@
 import './globals.css'
 
 import { ClassAttributes, ImgHTMLAttributes, JSX } from 'react'
+import { Toaster } from '@/components/ui/toaster'
+import { Footer } from '@/components/footer'
 import { Link } from '@/components/ui/link'
 import { Inter } from 'next/font/google'
 import NextLink from 'next/link'
-import { Toaster } from '@/components/ui/toaster'
-import { Footer } from '@/components/footer'
 
 const inter = Inter({ subsets: ['latin'] })
-
-import * as React from 'react'
 
 const SplashyLogo = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 922 312' {...props}>
@@ -112,7 +110,6 @@ export const ContainerLayout = ({ children }: { children: React.ReactNode }) => 
         </header>
         <main className='pt-8 pb-24'>{children}</main>
       </div>
-
       <Toaster />
       <Footer />
     </div>
