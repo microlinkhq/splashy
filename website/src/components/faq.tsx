@@ -19,7 +19,7 @@ export function FAQ () {
   const copyToClipboard = creatCopyToClipboard(toast)
 
   return (
-    <section id='faq' className='space-y-8 pb-24'>
+    <section id='faq' className='space-y-8'>
       <div className='space-y-6'>
         <div>
           <h3 className='text-xl font-semibold mb-6'>What is Splashy?</h3>

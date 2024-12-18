@@ -62,18 +62,7 @@ export const ContainerLayout = ({ children }: { children: React.ReactNode }) => 
           </Link>
         </p>
       </header>
-      <main
-        className={`pt-8 max-w-xl mx-auto px-4 ${
-          children &&
-          children.props &&
-          children.props.style &&
-          children.props.style.height > window.innerHeight
-            ? 'pb-24'
-            : ''
-        }`}
-      >
-        {children}
-      </main>
+      <main className='pt-8 max-w-xl mx-auto px-4 pb-24'>{children}</main>
       <Toaster />
       <Footer />
     </div>
