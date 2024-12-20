@@ -6,7 +6,7 @@ import { Link } from '@/components/ui/link'
 import { Code } from '@/components/ui/code'
 
 const microlinkSnippet = `// all the images detected will be returns palette
-fetch('https://api.microlink.io?url=https://example.com&palette')
+fetch('https://api.microlink.io?url=https://splashy.microlink.io&palette')
   .then(res => res.json())
 `
 
