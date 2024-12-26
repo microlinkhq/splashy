@@ -47,7 +47,7 @@
     "ndarray": "~1.0.19",
     "node-addon-api": "~8.3.0",
     "node-gyp": "~11.0.0",
-    "node-vibrant": "~3.2.1-alpha.1",
+    "node-vibrant": "~4.0.0",
     "serialize-error": "~8.1.0",
     "sharp": "0.33.5"
   },
