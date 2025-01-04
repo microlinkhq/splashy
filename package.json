@@ -2,7 +2,7 @@
   "name": "splashy",
   "description": "Given an image, extract predominant & palette colors",
   "homepage": "https://github.com/microlinkhq/splashy",
-  "version": "6.0.4",
+  "version": "6.0.5",
   "main": "src/index.js",
   "author": {
     "name": "Kiko Beats",
