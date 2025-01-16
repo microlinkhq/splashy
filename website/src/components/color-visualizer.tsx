@@ -34,7 +34,7 @@ export default function ColorVisualizer () {
           <ArrowLeft className='h-4 w-4' />
         </Button>
       </div>
-      <div className='flex h-full w-full'>
+      <div className='flex h-full w-full' id='main'>
         {getColorsFromUrl().map((color, index) => (
           <div
             key={index}
