@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'fs/promises'
 import { fileURLToPath } from 'node:url'
 import colorthief from 'colorthief'
-import Vibrant from 'node-vibrant'
+import { Vibrant } from 'node-vibrant/node'
 import { chain } from 'lodash-es'
 import { readdirSync } from 'fs'
 import mql from '@microlink/mql'
@@ -18,7 +18,7 @@ const images = readdirSync(path.resolve(__dirname, 'fixtures')).map(filename =>
 )
 
 const paletteUrl = palette =>
-  `https://splashy-palette.vercel.app/${palette.map(i => encodeURIComponent(i)).join('-')}`
+  `https://splashy.microlink.io/${palette.map(i => encodeURIComponent(i)).join('-')}`
 
 const screenshotUrl = async palette => {
   const url = paletteUrl(palette)
