@@ -4,6 +4,7 @@
   "devDependencies": {
     "@microlink/mql": "~0.13.12",
     "colorthief": "~2.6.0",
-    "lodash-es": "~4.17.21"
+    "lodash-es": "~4.17.21",
+    "node-vibrant": "~4.0.3"
   }
 }

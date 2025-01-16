@@ -11,15 +11,15 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `node-vibrant`
 
-[![node-vibrant](./output/node-vibrant-1.png)](https://iad.microlink.io/09pRn8QBQqzcE10SDzi0Pzr28AJ0wylrt6674C7t_k_epUHqUEK9oS3aO9fUZwMtnP4MM3zRezx8L_DfbgrXOA.png)
+[![node-vibrant](./output/node-vibrant-1.png)](https://iad.microlink.io/pRNrrlIpfb4c_QLD7rRA6vge9e0U81Hv9OJFG2SDqKl227qfLJXGR-Wj9asRknsB7b1mXxmt1iUGXr9YPD0P8g.png)
 
 ### Palette by `splashy`
 
-[![splashy](./output/splashy-1.png)](https://iad.microlink.io/eBuqBYZboCokaAgyD53pnAqW7x8wPgI0AYMKSEsZTDUbvFwTBlRoT5xcoq4ooz0YCtyHjnOA_Glt8kbDBhKn7A.png)
+[![splashy](./output/splashy-1.png)](https://iad.microlink.io/vLeyxL8vk01GB538_pAnPu5Fxs1yLGdX0yVeKJjwLsCUlJCochB99H3W2PKgmERlPSFF1DinEK672u7El4fddw.png)
 
 ### Palette by `colorthief`
 
-[![colorthief](./output/colorthief-1.png)](https://iad.microlink.io/oY9RIn21q1TZakZMFfukK-ZhcRcHxritAEcNFRyTR5i9RTzRJ66mMLU_2uU9435ByfCmFMQPWpsbN5rNzAw70Q.png)
+[![colorthief](./output/colorthief-1.png)](https://iad.microlink.io/PFXM7XtAVhA2xM0ZMHUGHx3agbIkUBnJUwc_6WcSP7lZMyhB7G4R3e9URJw1rHurWmaLes9NKpFY3RCUfikLmQ.png)
 
 ## Test 2
 
@@ -29,15 +29,15 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `node-vibrant`
 
-[![node-vibrant](./output/node-vibrant-2.png)](https://iad.microlink.io/jXMzy3IZpu7t7_hKjZ4JEEEmZcU3llcgxsfs73po0yqd2rhTB2JFbRjSC4umzfEHnpeMVJJNDXzNmdgIr8Z2kg.png)
+[![node-vibrant](./output/node-vibrant-2.png)](https://iad.microlink.io/k602MMafWpt7tgzErhvxVUu-XzbIVgeMtnZ31YQphrqNyjPwCjw2uyyPVeP-T6H1mJvMXBoRwdRZIrRDBQlJgA.png)
 
 ### Palette by `splashy`
 
-[![splashy](./output/splashy-2.png)](https://iad.microlink.io/ZjX6TEkXSpMXPoT2BxMHfc4Eya5qgJr-RJk5Sk2GPabEhT5hmamzYH11GP9BMu0oEYBgpwHpDQLFItns9dgIzg.png)
+[![splashy](./output/splashy-2.png)](https://iad.microlink.io/qpEagE7jpLW_PzLLGlobjPYtZkS3HtVNvyRoZ--kDGQx990A7GM_byDbAyy9WeRDPk5xyZvTX1ky0A2vuyDvOw.png)
 
 ### Palette by `colorthief`
 
-[![colorthief](./output/colorthief-2.png)](https://iad.microlink.io/CHo-y9RRgfVhhYXVTdkT4n93z3uZjY4bk8TZt4MqdowdFfd5-XEVakjbJNJhd2KTWzaqLKw2OgQpiFRfvAk7zQ.png)
+[![colorthief](./output/colorthief-2.png)](https://iad.microlink.io/UUcrn3KzjS8OLsvDp_DhW5rDN0j1lFaLau-E-myaA6XGuVM1e9STD4MBB1sK3JP645awFsoCe3_v4aZWjyZ70g.png)
 
 ## Test 3
 
@@ -47,15 +47,15 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `node-vibrant`
 
-[![node-vibrant](./output/node-vibrant-3.png)](https://iad.microlink.io/iuWlt37UxGF8qgBKJEHCbo_Hkdep_v-CRageoXOAPMb9lM7ah18HP1dIpqmnHjWVy_d22NCJOBeAk35A7J2hkw.png)
+[![node-vibrant](./output/node-vibrant-3.png)](https://iad.microlink.io/z8WZiYUJzhPnfiMLMoGY_Sa4iCM8XAbSdZXEcg1UDPkGe0eTO9gp5jgW9IyEwt7ixqp0CNoLiNsBVv-KvilaYQ.png)
 
 ### Palette by `splashy`
 
-[![splashy](./output/splashy-3.png)](https://iad.microlink.io/cLUc7GtkIUTQ0d4sevMnIE1fRRoKDArvb30UwppHN2g5bcvx3Ltzw-F4xdLrd0aw7h490G3XusdtP3t_OwL_cA.png)
+[![splashy](./output/splashy-3.png)](https://iad.microlink.io/hJEGIac8AmrFqswJZ_QXm6wk4OWKuXLZagmEI2OCnbRLyUgzNjEJcly4z9b6ETFGJ-iEi-Cfy-syM4-gvneT6Q.png)
 
 ### Palette by `colorthief`
 
-[![colorthief](./output/colorthief-3.png)](https://iad.microlink.io/SJdrel7u9Cf8_IiV9nWfYtsaEnFEETIY37JEsFJIiVnaX39j93KTmAI45Nu1-lSRqW4NGgBbGw47hbM5j-WwDw.png)
+[![colorthief](./output/colorthief-3.png)](https://iad.microlink.io/KG9-lAHJ43brFU1nOYby_t1z9S_QjnspYUOPMOR_kttnRhHlowb3oCkGcr_-j9ZaGIYumnKuk9C-8Qf3BDFYLw.png)
 
 ## Test 4
 
@@ -65,12 +65,12 @@ This is a comparison of various palette-extracting libraries, on the same image.
 
 ### Palette by `node-vibrant`
 
-[![node-vibrant](./output/node-vibrant-4.png)](https://iad.microlink.io/HE7HRM1DY45OAWb_wLH7cNxCE55FGUWwvNNgMEJ0dTz4lbSYLf0bT5xiVvdbjEy4GPk3Sy3gz0H-iuK8ZkYBAQ.png)
+[![node-vibrant](./output/node-vibrant-4.png)](https://iad.microlink.io/dhQirVsUuxxc4HX_g2tFSsJS2JAazOBm1xzggvBnBriLmqdO75gUOeMvXcazIk3zqopGcH7iM7bfmPlrlvBXtg.png)
 
 ### Palette by `splashy`
 
-[![splashy](./output/splashy-4.png)](https://iad.microlink.io/7OYNVK_p-Gyt_BR2iOAuN3-a55v4B8o2A2ICuCEcy-oh_q7XMzUsyLne0xi-j_IjzWUKRbR2TVRfwdrNQ2AQWA.png)
+[![splashy](./output/splashy-4.png)](https://iad.microlink.io/PtvSKUubLWIAM80QkLs7oBZfisxSMKJKcsB85RD2B92OrvCrA9eiGxEbvBxDPuL9hHt1JnlsYoFLYcXEmtTZaA.png)
 
 ### Palette by `colorthief`
 
-[![colorthief](./output/colorthief-4.png)](https://iad.microlink.io/v0nBKof7Zh9ldqJGy8Pgzqit2lnoPH01HdQBioCwGPsIRNOlZ3Dz9S1DP6lyV8napjhZboVFWeWLuedAtStXWw.png)
+[![colorthief](./output/colorthief-4.png)](https://iad.microlink.io/ZYuoiyFIb399qiT3QBUXiDdIhzOVXe0UOASE5y3lDy0ZVbYnPxGEQoT2z2eCp7YemYjI4zwr695eKNkpObCVRA.png)
