@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.7](https://github.com/microlinkhq/splashy/compare/v6.0.6...v6.0.7) (2025-02-18)
+
 ### 6.0.6 (2025-01-16)
 
 ### 6.0.5 (2025-01-04)
