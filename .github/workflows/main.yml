@@ -39,15 +39,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+          run_install: true
+      - name: Pretest
         run: |
           vips -v
           convert --version
           convert -list format
           convert -list configure
-          npm install --no-package-lock
       - name: Test
-        run: npm test
+        run: pnpm test
 
   release:
     needs: [test]
@@ -75,4 +79,4 @@ jobs:
           git config --global user.email ${{ secrets.GIT_EMAIL }}
           git config --global user.name ${{ secrets.GIT_USERNAME }}
           git pull origin master
-          npm run release
+          pnpm run release
