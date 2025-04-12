@@ -49,8 +49,8 @@
     "@lokesh.dhakar/quantize": "~1.4.0",
     "ndarray": "~1.0.19",
     "node-addon-api": "~8.3.1",
-    "node-gyp": "~11.1.0",
-    "sharp": "0.33.5"
+    "node-gyp": "~11.2.0",
+    "sharp": "0.34.1"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -115,6 +115,9 @@
     "package.json": [
       "finepack"
     ]
+  },
+  "pnpm": {
+    "neverBuiltDependencies": []
   },
   "simple-git-hooks": {
     "commit-msg": "npx commitlint --edit",
