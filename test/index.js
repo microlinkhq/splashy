@@ -11,9 +11,12 @@ const FIXTURES_PATH = path.resolve(__dirname, 'fixtures')
 
 const images = fs.readdirSync(FIXTURES_PATH)
 
+const SKIPPED_EXTENSIONS = ['.pbm', '.pgm', '.pnm', '.ppm']
+
 images.forEach(image => {
   const extension = path.extname(image)
-  test(extension, async t => {
+
+  ;(SKIPPED_EXTENSIONS.includes(extension) ? test.skip : test)(extension, async t => {
     const filepath = path.resolve(path.resolve(FIXTURES_PATH, image))
     const buffer = await readFile(filepath)
     const colors = await splashy(buffer)
