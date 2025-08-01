@@ -11,8 +11,6 @@ const FIXTURES_PATH = path.resolve(__dirname, '../benchmark/fixtures')
 
 const images = fs.readdirSync(FIXTURES_PATH)
 
-console.log(images)
-
 images.forEach(image => {
   test(image, async t => {
     const filepath = path.resolve(path.resolve(FIXTURES_PATH, image))
