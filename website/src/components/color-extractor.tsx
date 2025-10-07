@@ -95,7 +95,7 @@ export function ColorExtractor () {
         <div>
           <div
             {...getRootProps()}
-            className='border-2 rounded-2xl lg:h-[400px] h-[200px] flex flex-col items-center justify-center cursor-pointer border-primary bg-primary/5'
+            className='border-2 rounded-2xl lg:h-[350px] h-[200px] flex flex-col items-center justify-center cursor-pointer border-primary bg-primary/5'
           >
             <input {...getInputProps()} />
             <p className='text-2xl lg:text-4xl font-bold text-primary'>

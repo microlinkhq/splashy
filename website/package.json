@@ -9,17 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "~1.1.1",
-    "@radix-ui/react-toast": "~1.2.3",
+    "@radix-ui/react-slot": "~1.2.3",
+    "@radix-ui/react-toast": "~1.2.15",
     "class-variance-authority": "~0.7.1",
-    "http-body": "~1.0.12",
-    "lucide-react": "~0.468.0",
+    "http-body": "~1.0.15",
+    "lucide-react": "~0.545.0",
     "next": "15",
     "react": "19",
     "react-dom": "19",
-    "react-dropzone": "~14.3.5",
-    "splashy": "6.0.0-3",
-    "sugar-high": "~0.7.5",
+    "react-dropzone": "~14.3.8",
+    "splashy": "6.0.14",
+    "sugar-high": "~0.9.3",
     "tailwind-merge": "~2.5.5",
     "tailwindcss-animate": "~1.0.7"
   },
@@ -29,7 +29,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.1.0",
+    "eslint-config-next": "15.5.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
