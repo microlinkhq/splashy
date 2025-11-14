@@ -49,7 +49,7 @@
     "@lokesh.dhakar/quantize": "~1.4.0",
     "ndarray": "~1.0.19",
     "node-addon-api": "~8.5.0",
-    "node-gyp": "~12.0.0",
+    "node-gyp": "~12.1.0",
     "sharp": "0.34.4"
   },
   "devDependencies": {
