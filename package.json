@@ -50,7 +50,7 @@
     "ndarray": "~1.0.19",
     "node-addon-api": "~8.8.0",
     "node-gyp": "~13.0.0",
-    "sharp": "0.35.1"
+    "sharp": "0.35.2"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
