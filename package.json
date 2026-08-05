@@ -1,6 +1,6 @@
 {
   "name": "splashy",
-  "description": "Given an image, extract predominant & palette colors",
+  "description": "Extract predominant and palette colors from an image URL or file buffer.",
   "homepage": "https://github.com/microlinkhq/splashy",
   "version": "6.0.33",
   "main": "src/index.js",
@@ -33,17 +33,13 @@
     "canvas",
     "color",
     "colorthief",
-    "colour",
     "dominant",
     "extract",
-    "extraction",
-    "file",
     "image",
-    "main",
     "palette",
     "photo",
-    "picture",
-    "url"
+    "swatch",
+    "theme"
   ],
   "dependencies": {
     "@lokesh.dhakar/quantize": "~1.4.0",
