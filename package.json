@@ -47,7 +47,7 @@
   ],
   "dependencies": {
     "@lokesh.dhakar/quantize": "~1.4.0",
-    "ndarray": "~1.0.19",
+    "ndarray": "~1.1.1",
     "node-addon-api": "~8.9.0",
     "node-gyp": "~13.0.0",
     "sharp": "0.35.4"
