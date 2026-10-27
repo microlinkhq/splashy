@@ -8,8 +8,6 @@ const FRACT_BY_POPULATIONS = 0.75
 const MIN_ALPHA = 125
 const WHITE_THRESHOLD = 250
 
-const naturalOrder = (a, b) => (a < b ? -1 : a > b ? 1 : 0)
-
 const getColorIndex = (r, g, b) => (r << (2 * SIGBITS)) + (g << SIGBITS) + b
 
 class PQueue {
@@ -235,13 +233,11 @@ module.exports = (rgba, pixelCount, { step, maxColors }) => {
   if (!count) return false
   if (uniqueColors.length <= maxColors) return uniqueColors
 
-  const byCount = new PQueue((a, b) => naturalOrder(a.count(), b.count()))
+  const byCount = new PQueue((a, b) => a.count() - b.count())
   byCount.push(vbox)
   iterate(histo, byCount, FRACT_BY_POPULATIONS * maxColors)
 
-  const byVolume = new PQueue((a, b) =>
-    naturalOrder(a.count() * a.volume(), b.count() * b.volume())
-  )
+  const byVolume = new PQueue((a, b) => a.count() * a.volume() - b.count() * b.volume())
   while (byCount.size()) byVolume.push(byCount.pop())
   iterate(histo, byVolume, maxColors)
 
