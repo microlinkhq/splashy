@@ -128,7 +128,6 @@ const partialSums = (histo, vbox, axis) => {
 }
 
 const medianCutApply = (histo, vbox) => {
-  if (!vbox.count()) return
   const rw = vbox.r2 - vbox.r1 + 1
   const gw = vbox.g2 - vbox.g1 + 1
   const bw = vbox.b2 - vbox.b1 + 1
@@ -167,17 +166,14 @@ const medianCutApply = (histo, vbox) => {
 const iterate = (histo, queue, target) => {
   let ncolors = queue.size()
   let niters = 0
-  while (niters < MAX_ITERATIONS) {
+  while (niters++ < MAX_ITERATIONS) {
     if (ncolors >= target) return
-    if (niters++ > MAX_ITERATIONS) return
     const vbox = queue.pop()
     if (!vbox.count()) {
       queue.push(vbox)
-      niters++
       continue
     }
     const [vbox1, vbox2] = medianCutApply(histo, vbox)
-    if (!vbox1) return
     queue.push(vbox1)
     if (vbox2) {
       queue.push(vbox2)
