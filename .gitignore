@@ -32,3 +32,9 @@ coverage
 .node_history
 .vercel
 website/.next
+
+############################
+# Benchmark
+############################
+benchmark-output.json
+cache/
