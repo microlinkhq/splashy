@@ -74,6 +74,6 @@ The raw content for detecting the color information.
 
 Authored and maintained by [Kiko Beats](https://kikobeats.com) with help from [contributors](https://github.com/microlink/microlink-function/contributors).
 
-Special thanks to [Tim Carry](https://github.com/pixelastic) for writing the benchmark and [Lokesh Dhakar](https://github.com/lokesh) for the original code implementation.
+Special thanks to [Tim Carry](https://github.com/pixelastic) for writing the benchmark, [Lokesh Dhakar](https://github.com/lokesh) for the original code implementation, and [Nick Rabinowitz](https://github.com/nrabinowitz) for [quantize.js](https://gist.github.com/nrabinowitz/1104622) (MIT), the median cut quantization `src/quantize.js` is ported from.
 
 > [microlink.io](https://microlink.io) · GitHub [microlinkhq](https://github.com/microlinkhq) · X [@microlinkhq](https://x.com/microlinkhq)
