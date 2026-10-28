@@ -8,6 +8,10 @@ on:
     branches:
       - master
 
+env:
+  pnpm_config_dangerously_allow_all_builds: true
+  SKIP_INSTALL_SIMPLE_GIT_HOOKS: true
+
 jobs:
   test:
     if: github.ref != 'refs/heads/master'
@@ -24,7 +28,7 @@ jobs:
         with:
           version: latest
       - name: Install
-        run: pnpm install --dangerously-allow-all-builds
+        run: pnpm install
       - name: Pretest
         run: |
           vips -v
