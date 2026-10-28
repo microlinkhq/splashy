@@ -65,7 +65,7 @@
     "standard-version": "latest"
   },
   "engines": {
-    "node": ">= 8"
+    "node": ">= 20"
   },
   "files": [
     "src"
