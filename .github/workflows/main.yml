@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+env:
+  pnpm_config_dangerously_allow_all_builds: true
+  SKIP_INSTALL_SIMPLE_GIT_HOOKS: true
+
 jobs:
   contributors:
     if: "${{ github.event.head_commit.message != 'build: contributors' }}"
@@ -44,7 +48,7 @@ jobs:
         with:
           version: latest
       - name: Install
-        run: pnpm install --dangerously-allow-all-builds
+        run: pnpm install
       - name: Pretest
         run: |
           vips -v
