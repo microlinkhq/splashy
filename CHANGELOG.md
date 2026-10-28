@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 6.0.48 (2026-10-28)
+
+
+### Bug Fixes
+
+* declare the real minimum Node.js version ([#154](https://github.com/microlinkhq/splashy/issues/154)) ([838ae9c](https://github.com/microlinkhq/splashy/commit/838ae9cdd6495943145d50689c1dd142cc3f3664))
+
 ### 6.0.47 (2026-10-28)
 
 ### 6.0.46 (2026-10-27)
