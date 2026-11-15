@@ -240,7 +240,7 @@ test('strictly decreasing samples keep the upstream per-channel bounds', async t
   t.deepEqual(await splashy(await column(ramp(2, 11))), ['#2c2c58'])
 })
 
-test('spread samples keep the upstream median-cut palette', async t => {
+test('spread samples split every box that can still be split', async t => {
   const colors = []
   for (let i = 0; i < 11; i++) colors.push([(i * 15) & 255, (i * 7) & 255, (i * 13) & 255, 255])
   t.deepEqual(await splashy(await column(colors)), [
@@ -248,8 +248,23 @@ test('spread samples keep the upstream median-cut palette', async t => {
     '#7c3c6c',
     '#5c2c4c',
     '#2c1424',
-    '#8c407c',
-    '#4c2444'
+    '#4c2444',
+    '#3c1c34'
+  ])
+})
+
+test('a crowded histogram bin does not starve the other boxes', async t => {
+  const colors = []
+  for (let i = 0; i < 11; i++) {
+    for (let n = 0; n < 100; n++) colors.push([i % 8, Math.floor(i / 8), 0, 255])
+  }
+  for (let bin = 1; bin <= 4; bin++) colors.push([bin << 3, 0, 0, 255])
+  t.deepEqual(await splashy(await column(colors)), [
+    '#000000',
+    '#100000',
+    '#080000',
+    '#180000',
+    '#200000'
   ])
 })
 

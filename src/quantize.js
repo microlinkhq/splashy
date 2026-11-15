@@ -166,20 +166,23 @@ const medianCutApply = (histo, vbox) => {
 const iterate = (histo, queue, target) => {
   let ncolors = queue.size()
   let niters = 0
-  while (niters++ < MAX_ITERATIONS) {
-    if (ncolors >= target) return
+  const unsplittable = []
+  while (niters++ < MAX_ITERATIONS && queue.size() && ncolors < target) {
     const vbox = queue.pop()
     if (!vbox.count()) {
       queue.push(vbox)
       continue
     }
     const [vbox1, vbox2] = medianCutApply(histo, vbox)
-    queue.push(vbox1)
-    if (vbox2) {
-      queue.push(vbox2)
-      ncolors++
+    if (!vbox2) {
+      unsplittable.push(vbox1)
+      continue
     }
+    queue.push(vbox1)
+    queue.push(vbox2)
+    ncolors++
   }
+  unsplittable.forEach(vbox => queue.push(vbox))
 }
 
 const isWhite = (r, g, b) => r > WHITE_THRESHOLD && g > WHITE_THRESHOLD && b > WHITE_THRESHOLD
