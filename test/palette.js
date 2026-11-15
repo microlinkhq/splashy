@@ -135,6 +135,17 @@ test('a pixel is white only when every channel is above 250', async t => {
   t.deepEqual(
     await splashy(
       await column([
+        [250, 251, 251, 255],
+        [251, 250, 251, 255],
+        [251, 251, 250, 255],
+        [12, 34, 56, 255]
+      ])
+    ),
+    ['#fafbfb', '#fbfafb', '#fbfbfa', '#0c2238']
+  )
+  t.deepEqual(
+    await splashy(
+      await column([
         [251, 251, 251, 255],
         [12, 34, 56, 255]
       ])
