@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 6.0.49 (2026-11-15)
+
+
+### Bug Fixes
+
+* return a palette for all-white and transparent images ([#157](https://github.com/microlinkhq/splashy/issues/157)) ([9810041](https://github.com/microlinkhq/splashy/commit/9810041ece61b2953461508c21fbccf902a0483e)), closes [#156](https://github.com/microlinkhq/splashy/issues/156) [#00](https://github.com/microlinkhq/splashy/issues/00) [#080404](https://github.com/microlinkhq/splashy/issues/080404)
+
 ### 6.0.48 (2026-10-28)
 
 
