@@ -65,9 +65,9 @@ The raw content for detecting the color information.
 
 #### returns
 
-A `Promise` resolving to an array of up to 6 hex colors, most predominant first.
+A `Promise` resolving to an array of up to 6 hex colors.
 
-White (every channel above 250) and mostly transparent (alpha below 125) pixels are ignored. When white pixels are the only opaque ones, such as a blank page or a white icon on a transparent background, white is sampled instead, so the result is never empty for a visible image. A fully transparent image resolves to `[]`.
+Every 10th pixel is sampled. White (every channel above 250) and mostly transparent (alpha below 125) pixels are ignored. When white pixels are the only opaque samples, such as a blank page or a white icon on a transparent background, they are counted instead, so the palette is white. When no sample reaches the alpha threshold, such as a fully transparent image, the result is `[]`.
 
 ## Related
 

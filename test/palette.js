@@ -185,12 +185,18 @@ test('a fully transparent image returns an empty palette', async t => {
   t.deepEqual(await splashy(await solid({ r: 255, g: 255, b: 255, alpha: 0 }, 4)), [])
 })
 
-test('many near-white shades fall back to a white median-cut palette', async t => {
+test('many near-white shades inside one histogram bin stay white', async t => {
   const colors = []
-  for (let i = 0; i < 11; i++) colors.push([251 + (i % 5), 251 + ((i * 3) % 5), 255, 255])
-  const palette = await splashy(await column(colors))
-  t.true(palette.length > 0)
-  t.true(palette.every(color => /^#f[89a-f][0-9a-f]{4}$/.test(color)))
+  for (let i = 0; i < 11; i++) colors.push([251 + (i % 5), 251 + Math.floor(i / 5), 255, 255])
+  t.deepEqual(await splashy(await column(colors)), ['#f8f8f8'])
+})
+
+test('many off-white shades inside one histogram bin stay off-white', async t => {
+  const colors = []
+  for (let i = 0; i < 11; i++) {
+    colors.push([248 + (i % 3), 248 + (Math.floor(i / 3) % 3), 248 + Math.floor(i / 9), 255])
+  }
+  t.deepEqual(await splashy(await column(colors)), ['#f8f8f8'])
 })
 
 test('repeated sampled colors are returned once', async t => {
@@ -220,19 +226,12 @@ test('more than ten sampled colors run the median cut', async t => {
   ])
 })
 
-test('colors inside one histogram bin keep the upstream palette', async t => {
+test('colors inside one histogram bin collapse into that bin', async t => {
   const colors = []
   for (let r = 0; r < 8 && colors.length < 11; r++) {
     for (let g = 0; g < 8 && colors.length < 11; g++) colors.push([r, g, 0, 255])
   }
-  t.deepEqual(await splashy(await column(colors)), [
-    '#000000',
-    '#080404',
-    '#080404',
-    '#080404',
-    '#080404',
-    '#080404'
-  ])
+  t.deepEqual(await splashy(await column(colors)), ['#000000'])
 })
 
 test('strictly decreasing samples keep the upstream per-channel bounds', async t => {

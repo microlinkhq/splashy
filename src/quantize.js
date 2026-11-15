@@ -132,7 +132,7 @@ const medianCutApply = (histo, vbox) => {
   const gw = vbox.g2 - vbox.g1 + 1
   const bw = vbox.b2 - vbox.b1 + 1
   const maxw = Math.max(rw, gw, bw)
-  if (vbox.count() === 1) return [vbox.copy()]
+  if (maxw === 1 || vbox.count() === 1) return [vbox.copy()]
 
   const axis = maxw === rw ? 'r' : maxw === gw ? 'g' : 'b'
   const { partialsum, total } = partialSums(histo, vbox, axis)
