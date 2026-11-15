@@ -122,8 +122,8 @@ test('white and transparent pixels are ignored', async t => {
 
 test('alpha of 125 is sampled and 124 is not', async t => {
   t.deepEqual(await splashy(await column([[1, 2, 3, 125]])), ['#010203'])
-  await t.throwsAsync(splashy(await column([[1, 2, 3, 124]])), { instanceOf: TypeError })
-  await t.throwsAsync(splashy(await column([[1, 2, 3, 0]])), { instanceOf: TypeError })
+  t.deepEqual(await splashy(await column([[1, 2, 3, 124]])), [])
+  t.deepEqual(await splashy(await column([[1, 2, 3, 0]])), [])
 })
 
 test('a pixel is white only when every channel is above 250', async t => {
@@ -132,8 +132,82 @@ test('a pixel is white only when every channel is above 250', async t => {
   t.deepEqual(await splashy(await column([[251, 250, 251, 255]])), ['#fbfafb'])
   t.deepEqual(await splashy(await column([[251, 251, 250, 255]])), ['#fbfbfa'])
   t.deepEqual(await splashy(await column([[251, 0, 0, 255]])), ['#fb0000'])
-  await t.throwsAsync(splashy(await column([[251, 251, 251, 255]])), { instanceOf: TypeError })
-  await t.throwsAsync(splashy(await column([[255, 255, 255, 255]])), { instanceOf: TypeError })
+  t.deepEqual(
+    await splashy(
+      await column([
+        [250, 251, 251, 255],
+        [251, 250, 251, 255],
+        [251, 251, 250, 255],
+        [12, 34, 56, 255]
+      ])
+    ),
+    ['#fafbfb', '#fbfafb', '#fbfbfa', '#0c2238']
+  )
+  t.deepEqual(
+    await splashy(
+      await column([
+        [251, 251, 251, 255],
+        [12, 34, 56, 255]
+      ])
+    ),
+    ['#0c2238']
+  )
+  t.deepEqual(
+    await splashy(
+      await column([
+        [255, 255, 255, 255],
+        [12, 34, 56, 255]
+      ])
+    ),
+    ['#0c2238']
+  )
+})
+
+const solid = (background, channels = 3) =>
+  sharp({ create: { width: 50, height: 50, channels, background } })
+    .png()
+    .toBuffer()
+
+test('an all-white image falls back to white', async t => {
+  t.deepEqual(await splashy(await solid({ r: 255, g: 255, b: 255 })), ['#ffffff'])
+  t.deepEqual(await splashy(await column([[251, 251, 251, 255]])), ['#fbfbfb'])
+})
+
+test('a white icon on a transparent background falls back to white', async t => {
+  const icon = await sharp(
+    Buffer.from('<svg width="50" height="50"><circle cx="25" cy="25" r="15" fill="#fff"/></svg>')
+  )
+    .png()
+    .toBuffer()
+  t.deepEqual(await splashy(icon), ['#ffffff'])
+})
+
+test('white is ignored when any other opaque color is present', async t => {
+  const image = await column([
+    [255, 255, 255, 255],
+    [255, 255, 255, 255],
+    [12, 34, 56, 255]
+  ])
+  t.deepEqual(await splashy(image), ['#0c2238'])
+})
+
+test('a fully transparent image returns an empty palette', async t => {
+  t.deepEqual(await splashy(await solid({ r: 0, g: 0, b: 0, alpha: 0 }, 4)), [])
+  t.deepEqual(await splashy(await solid({ r: 255, g: 255, b: 255, alpha: 0 }, 4)), [])
+})
+
+test('many near-white shades inside one histogram bin stay white', async t => {
+  const colors = []
+  for (let i = 0; i < 11; i++) colors.push([251 + (i % 5), 251 + Math.floor(i / 5), 255, 255])
+  t.deepEqual(await splashy(await column(colors)), ['#f8f8f8'])
+})
+
+test('many off-white shades inside one histogram bin stay off-white', async t => {
+  const colors = []
+  for (let i = 0; i < 11; i++) {
+    colors.push([248 + (i % 3), 248 + (Math.floor(i / 3) % 3), 248 + Math.floor(i / 9), 255])
+  }
+  t.deepEqual(await splashy(await column(colors)), ['#f8f8f8'])
 })
 
 test('repeated sampled colors are returned once', async t => {
@@ -163,19 +237,12 @@ test('more than ten sampled colors run the median cut', async t => {
   ])
 })
 
-test('colors inside one histogram bin keep the upstream palette', async t => {
+test('colors inside one histogram bin collapse into that bin', async t => {
   const colors = []
   for (let r = 0; r < 8 && colors.length < 11; r++) {
     for (let g = 0; g < 8 && colors.length < 11; g++) colors.push([r, g, 0, 255])
   }
-  t.deepEqual(await splashy(await column(colors)), [
-    '#000000',
-    '#080404',
-    '#080404',
-    '#080404',
-    '#080404',
-    '#080404'
-  ])
+  t.deepEqual(await splashy(await column(colors)), ['#000000'])
 })
 
 test('strictly decreasing samples keep the upstream per-channel bounds', async t => {
@@ -184,7 +251,7 @@ test('strictly decreasing samples keep the upstream per-channel bounds', async t
   t.deepEqual(await splashy(await column(ramp(2, 11))), ['#2c2c58'])
 })
 
-test('spread samples keep the upstream median-cut palette', async t => {
+test('spread samples split every box that can still be split', async t => {
   const colors = []
   for (let i = 0; i < 11; i++) colors.push([(i * 15) & 255, (i * 7) & 255, (i * 13) & 255, 255])
   t.deepEqual(await splashy(await column(colors)), [
@@ -192,8 +259,23 @@ test('spread samples keep the upstream median-cut palette', async t => {
     '#7c3c6c',
     '#5c2c4c',
     '#2c1424',
-    '#8c407c',
-    '#4c2444'
+    '#4c2444',
+    '#3c1c34'
+  ])
+})
+
+test('a crowded histogram bin does not starve the other boxes', async t => {
+  const colors = []
+  for (let i = 0; i < 11; i++) {
+    for (let n = 0; n < 100; n++) colors.push([i % 8, Math.floor(i / 8), 0, 255])
+  }
+  for (let bin = 1; bin <= 4; bin++) colors.push([bin << 3, 0, 0, 255])
+  t.deepEqual(await splashy(await column(colors)), [
+    '#000000',
+    '#100000',
+    '#080000',
+    '#180000',
+    '#200000'
   ])
 })
 

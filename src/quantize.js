@@ -132,7 +132,7 @@ const medianCutApply = (histo, vbox) => {
   const gw = vbox.g2 - vbox.g1 + 1
   const bw = vbox.b2 - vbox.b1 + 1
   const maxw = Math.max(rw, gw, bw)
-  if (vbox.count() === 1) return [vbox.copy()]
+  if (maxw === 1 || vbox.count() === 1) return [vbox.copy()]
 
   const axis = maxw === rw ? 'r' : maxw === gw ? 'g' : 'b'
   const { partialsum, total } = partialSums(histo, vbox, axis)
@@ -166,26 +166,31 @@ const medianCutApply = (histo, vbox) => {
 const iterate = (histo, queue, target) => {
   let ncolors = queue.size()
   let niters = 0
-  while (niters++ < MAX_ITERATIONS) {
-    if (ncolors >= target) return
+  const unsplittable = []
+  while (niters++ < MAX_ITERATIONS && queue.size() && ncolors < target) {
     const vbox = queue.pop()
     if (!vbox.count()) {
       queue.push(vbox)
       continue
     }
     const [vbox1, vbox2] = medianCutApply(histo, vbox)
-    queue.push(vbox1)
-    if (vbox2) {
-      queue.push(vbox2)
-      ncolors++
+    if (!vbox2) {
+      unsplittable.push(vbox1)
+      continue
     }
+    queue.push(vbox1)
+    queue.push(vbox2)
+    ncolors++
   }
+  unsplittable.forEach(vbox => queue.push(vbox))
 }
 
-const isSampled = (r, g, b, a) =>
-  a >= MIN_ALPHA && !(r > WHITE_THRESHOLD && g > WHITE_THRESHOLD && b > WHITE_THRESHOLD)
+const isWhite = (r, g, b) => r > WHITE_THRESHOLD && g > WHITE_THRESHOLD && b > WHITE_THRESHOLD
 
-const sample = (rgba, pixelCount, step, maxColors) => {
+const isSampled = (r, g, b, a, includeWhite) =>
+  a >= MIN_ALPHA && (includeWhite || !isWhite(r, g, b))
+
+const sample = (rgba, pixelCount, step, maxColors, includeWhite) => {
   const histo = new Uint32Array(HISTO_SIZE)
   const uniqueKeys = []
   const uniqueColors = []
@@ -201,7 +206,7 @@ const sample = (rgba, pixelCount, step, maxColors) => {
     const r = rgba[offset]
     const g = rgba[offset + 1]
     const b = rgba[offset + 2]
-    if (!isSampled(r, g, b, rgba[offset + 3])) continue
+    if (!isSampled(r, g, b, rgba[offset + 3], includeWhite)) continue
     count++
     if (uniqueKeys.length <= maxColors) {
       const key = (r << 16) | (g << 8) | b
@@ -224,9 +229,19 @@ const sample = (rgba, pixelCount, step, maxColors) => {
   return { count, uniqueColors, histo, vbox: new VBox(rmin, rmax, gmin, gmax, bmin, bmax, histo) }
 }
 
+const sampleWithWhiteFallback = (rgba, pixelCount, step, maxColors) => {
+  const withoutWhite = sample(rgba, pixelCount, step, maxColors, false)
+  return withoutWhite.count ? withoutWhite : sample(rgba, pixelCount, step, maxColors, true)
+}
+
 module.exports = (rgba, pixelCount, { step, maxColors }) => {
-  const { count, uniqueColors, histo, vbox } = sample(rgba, pixelCount, step, maxColors)
-  if (!count) return false
+  const { count, uniqueColors, histo, vbox } = sampleWithWhiteFallback(
+    rgba,
+    pixelCount,
+    step,
+    maxColors
+  )
+  if (!count) return []
   if (uniqueColors.length <= maxColors) return uniqueColors
 
   const byCount = new PQueue((a, b) => a.count() - b.count())
