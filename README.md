@@ -63,6 +63,12 @@ Type: [ImageSource](https://github.com/akfish/node-vibrant#imagesource)
 
 The raw content for detecting the color information.
 
+#### returns
+
+A `Promise` resolving to an array of up to 6 hex colors, most predominant first.
+
+White (every channel above 250) and mostly transparent (alpha below 125) pixels are ignored. When white pixels are the only opaque ones, such as a blank page or a white icon on a transparent background, white is sampled instead, so the result is never empty for a visible image. A fully transparent image resolves to `[]`.
+
 ## Related
 
 - [color-microservice](https://github.com/Kikobeats/color-microservice) – Get color information from any URL image microservice.

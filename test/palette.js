@@ -122,8 +122,8 @@ test('white and transparent pixels are ignored', async t => {
 
 test('alpha of 125 is sampled and 124 is not', async t => {
   t.deepEqual(await splashy(await column([[1, 2, 3, 125]])), ['#010203'])
-  await t.throwsAsync(splashy(await column([[1, 2, 3, 124]])), { instanceOf: TypeError })
-  await t.throwsAsync(splashy(await column([[1, 2, 3, 0]])), { instanceOf: TypeError })
+  t.deepEqual(await splashy(await column([[1, 2, 3, 124]])), [])
+  t.deepEqual(await splashy(await column([[1, 2, 3, 0]])), [])
 })
 
 test('a pixel is white only when every channel is above 250', async t => {
@@ -132,8 +132,65 @@ test('a pixel is white only when every channel is above 250', async t => {
   t.deepEqual(await splashy(await column([[251, 250, 251, 255]])), ['#fbfafb'])
   t.deepEqual(await splashy(await column([[251, 251, 250, 255]])), ['#fbfbfa'])
   t.deepEqual(await splashy(await column([[251, 0, 0, 255]])), ['#fb0000'])
-  await t.throwsAsync(splashy(await column([[251, 251, 251, 255]])), { instanceOf: TypeError })
-  await t.throwsAsync(splashy(await column([[255, 255, 255, 255]])), { instanceOf: TypeError })
+  t.deepEqual(
+    await splashy(
+      await column([
+        [251, 251, 251, 255],
+        [12, 34, 56, 255]
+      ])
+    ),
+    ['#0c2238']
+  )
+  t.deepEqual(
+    await splashy(
+      await column([
+        [255, 255, 255, 255],
+        [12, 34, 56, 255]
+      ])
+    ),
+    ['#0c2238']
+  )
+})
+
+const solid = (background, channels = 3) =>
+  sharp({ create: { width: 50, height: 50, channels, background } })
+    .png()
+    .toBuffer()
+
+test('an all-white image falls back to white', async t => {
+  t.deepEqual(await splashy(await solid({ r: 255, g: 255, b: 255 })), ['#ffffff'])
+  t.deepEqual(await splashy(await column([[251, 251, 251, 255]])), ['#fbfbfb'])
+})
+
+test('a white icon on a transparent background falls back to white', async t => {
+  const icon = await sharp(
+    Buffer.from('<svg width="50" height="50"><circle cx="25" cy="25" r="15" fill="#fff"/></svg>')
+  )
+    .png()
+    .toBuffer()
+  t.deepEqual(await splashy(icon), ['#ffffff'])
+})
+
+test('white is ignored when any other opaque color is present', async t => {
+  const image = await column([
+    [255, 255, 255, 255],
+    [255, 255, 255, 255],
+    [12, 34, 56, 255]
+  ])
+  t.deepEqual(await splashy(image), ['#0c2238'])
+})
+
+test('a fully transparent image returns an empty palette', async t => {
+  t.deepEqual(await splashy(await solid({ r: 0, g: 0, b: 0, alpha: 0 }, 4)), [])
+  t.deepEqual(await splashy(await solid({ r: 255, g: 255, b: 255, alpha: 0 }, 4)), [])
+})
+
+test('many near-white shades fall back to a white median-cut palette', async t => {
+  const colors = []
+  for (let i = 0; i < 11; i++) colors.push([251 + (i % 5), 251 + ((i * 3) % 5), 255, 255])
+  const palette = await splashy(await column(colors))
+  t.true(palette.length > 0)
+  t.true(palette.every(color => /^#f[89a-f][0-9a-f]{4}$/.test(color)))
 })
 
 test('repeated sampled colors are returned once', async t => {
